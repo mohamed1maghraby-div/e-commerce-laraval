@@ -13,11 +13,11 @@ class FrontendController extends Controller
     }
     public function cart()
     {
-        return view('frontend.index');
+        return view('frontend.cart');
     }
     public function checkout()
     {
-        return view('frontend.index');
+        return view('frontend.checkout');
     }
     public function detail()
     {
@@ -25,6 +25,6 @@ class FrontendController extends Controller
     }
     public function shop()
     {
-        return view('frontend.index');
+        return view('frontend.shop');
     }
 }
