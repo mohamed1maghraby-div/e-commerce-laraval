@@ -22,10 +22,16 @@ Route::get('/checkout', [FrontendController::class, 'checkout'])->name('frontend
 Route::get('/detail', [FrontendController::class, 'detail'])->name('frontend.detail');
 Route::get('/shop', [FrontendController::class, 'shop'])->name('frontend.shop');
 
-Route::get('/admin/login', [BackendController::class, 'login'])->name('backend.login');
-Route::get('/admin/forget-password', [BackendController::class, 'forget_password'])->name('backend.forget_password');
-Route::get('/admin/index', [BackendController::class, 'index'])->name('backend.index');
 
 Auth::routes(['verify' => true]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){
+    Route::group(['middleware' => 'guest'], function(){
+        Route::get('/login', [BackendController::class, 'login'])->name('login');
+        Route::get('/forget-password', [BackendController::class, 'forget_password'])->name('forget_password');
+    });
+    Route::group(['middleware' => ['roles', 'role:admin|supervisor']], function(){
+        Route::get('/', [BackendController::class, 'index'])->name('index_route');
+        Route::get('/index', [BackendController::class, 'index'])->name('index');
+    });
+});

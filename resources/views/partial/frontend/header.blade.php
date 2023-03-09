@@ -52,7 +52,7 @@
                                 </a>
                                 <div class="dropdown-menu mt-3" aria-labelledby="authDropdown">
                                     <a href="#" class="dropdown-item border-0">My Profile</a>
-                                    <a href="javascrpt:void(0);" class="dropdown-item border-0"
+                                    <a href="javascript:void(0);" class="dropdown-item border-0"
                                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                                     >Logout</a>
                                     <form action="{{ route('logout') }}" method="post" id="logout-form" class="d-none">
