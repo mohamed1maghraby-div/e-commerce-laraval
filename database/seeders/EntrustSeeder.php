@@ -24,6 +24,7 @@ class EntrustSeeder extends Seeder
         $admin = User::create([
             'first_name' => 'Admin',
             'last_name' => 'System',
+            'username' => 'admin',
             'email' => 'admin@ecommerce.test',
             'email_verified_at' => now(),
             'mobile' => '96650000000',
@@ -37,6 +38,7 @@ class EntrustSeeder extends Seeder
         $supervisor = User::create([
             'first_name' => 'Supervisor',
             'last_name' => 'System',
+            'username' => 'supervisor',
             'email' => 'supervisor@ecommerce.test',
             'email_verified_at' => now(),
             'mobile' => '96650000001',
@@ -50,6 +52,7 @@ class EntrustSeeder extends Seeder
         $customer = User::create([
             'first_name' => 'Sami',
             'last_name' => 'Mansour',
+            'username' => 'Sami',
             'email' => 'Sami@gmail.com',
             'email_verified_at' => now(),
             'mobile' => '96650000002',
@@ -64,6 +67,7 @@ class EntrustSeeder extends Seeder
             $randomcustomer = User::create([
                 'first_name' => $faker->firstName,
                 'last_name' => $faker->lastName,
+                'username' => $faker->userName,
                 'email' => $faker->unique()->safeEmail,
                 'email_verified_at' => now(),
                 'mobile' => '96650'. $faker->numberBetween(1000000, 9999999),

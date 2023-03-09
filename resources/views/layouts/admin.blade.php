@@ -55,7 +55,7 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-    @include('partial.backend.modal')
+    @include('partial.backend.model')
 </div>
 
     <!-- Scripts -->

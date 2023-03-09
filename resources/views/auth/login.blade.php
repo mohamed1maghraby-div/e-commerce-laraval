@@ -4,7 +4,7 @@
     <div class="container">
       <div class="row px-4 px-lg-5 py-lg-4 align-items-center">
         <div class="col-lg-6">
-          <h1 class="h2 text-uppercase mb-0">Login</h1>
+          <h1 class="h2 text-uppercase mb-0">{{ __('Login') }}</h1>
         </div>
         <div class="col-lg-6 text-lg-end">
            
@@ -15,7 +15,7 @@
   <section class="py-5">
     <div class="row">
         <div class="col-6 offset-3">
-            <h2 class="h5 text-uppercase mb-4"{{ __('Login') }}></h2>
+            <h2 class="h5 text-uppercase mb-4">{{ __('Login') }}</h2>
             <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="row">
