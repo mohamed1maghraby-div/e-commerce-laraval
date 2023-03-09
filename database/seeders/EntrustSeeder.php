@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Permission;
 use App\Models\Role;
 use App\Models\User;
 use Faker\Factory;
@@ -79,5 +80,8 @@ class EntrustSeeder extends Seeder
             $randomcustomer->attachRole($customerRoule);
             
         }
+
+
+        Permission::create(['name', 'display_name', 'description', 'route', 'module', 'as', 'icon', 'parent' , 'parent_show', 'parent_original', 'sidebar_link', 'appear', 'ordering']);
     }
 }

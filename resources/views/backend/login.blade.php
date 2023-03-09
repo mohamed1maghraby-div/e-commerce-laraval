@@ -42,7 +42,7 @@
                             </form>
                             <hr>
                             <div class="text-center">
-                                <a class="small" href="{{ route('backend.forget_password') }}">Forgot Password?</a>
+                                <a class="small" href="{{ route('admin.forget_password') }}">Forgot Password?</a>
                             </div>
                         </div>
                     </div>
