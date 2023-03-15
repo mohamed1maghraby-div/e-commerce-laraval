@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\BackendController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Backend\ProductCategoriesController;
+use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\TagController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,5 +37,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){
         Route::get('/', [BackendController::class, 'index'])->name('index_route');
         Route::get('/index', [BackendController::class, 'index'])->name('index');
         Route::resource('product_categories', ProductCategoriesController::class);
+        Route::resource('products', ProductController::class);
+        Route::resource('tags', TagController::class);
     });
 });
