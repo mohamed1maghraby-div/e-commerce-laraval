@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Nicolaslopezj\Searchable\SearchableTrait;
 
 class ProductCategory extends Model
 {
-    use HasFactory, Sluggable;
+    use HasFactory, Sluggable, SearchableTrait;
 
     protected $guarded = [];
 
@@ -20,6 +21,12 @@ class ProductCategory extends Model
             ]
         ];
     }
+
+    protected $searchable = [
+        'columns' => [
+            'product_categories.name' => 10,
+        ],
+    ];
 
     public function products()
     {

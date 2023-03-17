@@ -24,6 +24,7 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('backend/css/sb-admin-2.css') }}" rel="stylesheet">
+    <link href="{{ asset('backend/vendor/bootstrap-fileinput/css/fileinput.min.css') }}" rel="stylesheet">
     @section('style')
 </head>
 
@@ -43,6 +44,7 @@
                 @include('partial.backend.navbar')
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+                    @include('partial.backend.flash')
                     @yield('content')
                 </div>
             </div>
@@ -66,6 +68,12 @@
     <!-- Core plugin JavaScript-->
     <script src="{{ asset('backend/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
     <script src="{{ asset('backend/js/sb-admin-2.min.js') }}"></script>
+    <script src="{{ asset('backend/js/custom.js') }}"></script>
+    <script src="{{ asset('backend/vendor/bootstrap-fileinput/js/plugins/piexif.min.js') }}"></script>
+    <script src="{{ asset('backend/vendor/bootstrap-fileinput/js/plugins/sortable.min.js') }}"></script>
+    <script src="{{ asset('backend/vendor/bootstrap-fileinput/js/fileinput.min.js') }}"></script>
+    <script src="{{ asset('backend/vendor/bootstrap-fileinput/themes/fas/theme.min.js') }}"></script>
+
 @yield('script')
 
 
