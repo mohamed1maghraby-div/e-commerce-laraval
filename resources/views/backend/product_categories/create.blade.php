@@ -39,7 +39,7 @@
                         <label for="status">Status</label>
                         <select name="status" class="form-control">
                             <option value="1" {{ old('status') == 1 ? 'selected' : null }}>Active</option>
-                            <option value="1" {{ old('status') == 1 ? 'selected' : null }}>Inactive</option>
+                            <option value="0" {{ old('status') == 0 ? 'selected' : null }}>Inactive</option>
                         </select>
                         @error('status') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>

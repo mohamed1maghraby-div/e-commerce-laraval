@@ -4,7 +4,7 @@ namespace App\Http\Requests\Backend;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ProductCategoryRequest extends FormRequest
+class TagRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,18 +24,14 @@ class ProductCategoryRequest extends FormRequest
         switch ($this->method()){
             case 'POST':
                 return [
-                    'name' =>'required|max:255|unique:product_categories',
+                    'name' =>'required|max:255|unique:tags',
                     'status' =>'required',
-                    'parent_id' =>'nullable',
-                    'cover' =>'required|mimes:png,jpg,jpeg|max:2000',
                 ];
             case 'PUT':
             case 'PATCH':
                 return [
-                    'name' =>'required|max:255|unique:product_categories,name,'. $this->route()->product_category->id,
+                    'name' =>'required|max:255|unique:tags,name,'. $this->route()->tag->id,
                     'status' =>'required',
-                    'parent_id' =>'nullable',
-                    'cover' =>'nullable|mimes:png,jpg,jpeg|max:2000',
                 ];
             default: break;
         }

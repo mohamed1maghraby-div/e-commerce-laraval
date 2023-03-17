@@ -5,12 +5,14 @@
         <div class="card-header py-3 d-flex">
             <h6 class="m-0 font-weight-bold text-primary"> Product Categories </h6>
             <div class="ml-auto">
+                @ability('admin', 'create_product_categories')
                 <a href="{{ route('admin.product_categories.create') }}" class="btn btn-primary">
                     <span class="icon text-white-50">
                         <i class="fa fa-plus"></i>
                     </span>
                     <span class="text">Add new category</span>
                 </a>
+                @endability
             </div>
         </div>
 
@@ -34,18 +36,28 @@
                             <td>{{ $category->name }}</td>
                             <td>{{ $category->products_count }}</td>
                             <td>{{ $category->parent != null ? $category->parent->name : '-' }}</td>
-                            <td>{{ $category->status }}</td>
+                            <td>{{ $category->status() }}</td>
                             <td>{{ $category->created_at }}</td>
                             
                             <td>
-                                <div class="btn-group">
+                                <div class="btn-group btn-group-sm">
+                                    @ability('admin', 'update_product_categories')
                                     <a href="{{ route('admin.product_categories.edit',$category->id) }}" class="btn btn-primary">
                                         <i class="fa fa-edit"></i>
                                     </a>
-                                    <a href="{{ route('admin.product_categories.destroy',$category->id) }}" class="btn btn-danger">
+                                    @endability
+                                    @ability('admin', 'update_product_categories')
+                                    <a href="javascript:void(0);" onclick="if(confirm('Are you sure to delete this record?')){document.getElementById('delete-product-category-{{ $category->id }}').submit(); }else{return false;}" class="btn btn-danger">
                                         <i class="fa fa-trash"></i>
                                     </a>
+                                    @endability
                                 </div>
+                                @ability('admin', 'update_product_categories')
+                                <form action="{{ route('admin.product_categories.destroy',$category->id) }}" method="post" id="delete-product-category-{{ $category->id }}" class="d-none">
+                                    @csrf
+                                    @method('DELETE') 
+                                </form>
+                                @endability
                             </td>
                         </tr>
                     @empty
@@ -58,7 +70,7 @@
                     <tr>
                         <td colspan="6">
                             <div class="float-right">
-                                {!! $categories->links() !!}
+                                {!! $categories->appends(request()->all())->links() !!}
                             </div>
                         </td>
                     </tr>
