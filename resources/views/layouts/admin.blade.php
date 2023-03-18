@@ -25,7 +25,8 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('backend/css/sb-admin-2.css') }}" rel="stylesheet">
     <link href="{{ asset('backend/vendor/bootstrap-fileinput/css/fileinput.min.css') }}" rel="stylesheet">
-    @section('style')
+    <link rel="stylesheet" href="{{ asset('backend/vendor/summernote/summernote-bs4.min.css') }}">
+    @yield('style')
 </head>
 
 <body id="page-top">
@@ -74,6 +75,7 @@
     <script src="{{ asset('backend/vendor/bootstrap-fileinput/js/fileinput.min.js') }}"></script>
     <script src="{{ asset('backend/vendor/bootstrap-fileinput/themes/fas/theme.min.js') }}"></script>
 
+    <script src="{{ asset('backend/vendor/summernote/summernote-bs4.min.js') }}"></script>
 @yield('script')
 
 
