@@ -4,11 +4,12 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 use Mindscms\Entrust\Traits\EntrustUserWithPermissionsTrait;
 
 class User extends Authenticatable implements MustVerifyEmail
@@ -55,5 +56,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function getFullNameAttribute(): string
     {
         return ucfirst($this->first_name) . ' ' . ucfirst($this->last_name);
+    }
+
+    public function rewiews(): HasMany
+    {
+        return $this->hasMany(ProductReview::class);
     }
 }
