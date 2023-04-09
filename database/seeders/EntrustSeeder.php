@@ -136,7 +136,7 @@ class EntrustSeeder extends Seeder
         $updateProductCoupons =  Permission::create([ 'name' => 'update_product_reviews', 'display_name' => 'Update Review', 'route' => 'product_reviews', 'module' => 'product_reviews', 'as' => 'product_reviews.edit', 'icon' => null, 'parent' => $manageProductReviews->id, 'parent_original' => $manageProductReviews->id, 'parent_show' => $manageProductReviews->id, 'sidebar_link' => '1', 'appear' => '0']);
         $deleteProductCoupons =  Permission::create([ 'name' => 'delete_product_reviews', 'display_name' => 'Delete Review', 'route' => 'product_reviews', 'module' => 'product_reviews', 'as' => 'product_reviews.destroy', 'icon' => null, 'parent' => $manageProductReviews->id, 'parent_original' => $manageProductReviews->id, 'parent_show' => $manageProductReviews->id, 'sidebar_link' => '1', 'appear' => '0']);
         
-        //PRODUCT REVIEWS
+        //CUSTOMERS
         $manageCustomers =  Permission::create([ 'name' => 'manage_customers', 'display_name' => 'Customers', 'route' => 'customers', 'module' => 'customers', 'as' => 'customers.index', 'icon' => 'fas fa-user', 'parent' => '0', 'parent_original' => '0', 'sidebar_link' => '1', 'appear' => '1', 'ordering' => '30']);
         $manageCustomers->parent_show = $manageCustomers->id;
         $manageCustomers->save();
@@ -145,6 +145,16 @@ class EntrustSeeder extends Seeder
         $displayProductCoupons =  Permission::create([ 'name' => 'display_customers', 'display_name' => 'Show Customer', 'route' => 'customers', 'module' => 'customers', 'as' => 'customers.show', 'icon' => null, 'parent' => $manageCustomers->id, 'parent_original' => $manageCustomers->id, 'parent_show' => $manageCustomers->id, 'sidebar_link' => '1', 'appear' => '0']);
         $updateProductCoupons =  Permission::create([ 'name' => 'update_customers', 'display_name' => 'Update Customer', 'route' => 'customers', 'module' => 'customers', 'as' => 'customers.edit', 'icon' => null, 'parent' => $manageCustomers->id, 'parent_original' => $manageCustomers->id, 'parent_show' => $manageCustomers->id, 'sidebar_link' => '1', 'appear' => '0']);
         $deleteProductCoupons =  Permission::create([ 'name' => 'delete_customers', 'display_name' => 'Delete Customer', 'route' => 'customers', 'module' => 'customers', 'as' => 'customers.destroy', 'icon' => null, 'parent' => $manageCustomers->id, 'parent_original' => $manageCustomers->id, 'parent_show' => $manageCustomers->id, 'sidebar_link' => '1', 'appear' => '0']);
+        
+        //SUPERVISOR
+        $manageSupervisors =  Permission::create([ 'name' => 'manage_supervisors', 'display_name' => 'Supervisors', 'route' => 'supervisors', 'module' => 'supervisors', 'as' => 'supervisors.index', 'icon' => 'fas fa-user', 'parent' => '0', 'parent_original' => '0', 'sidebar_link' => '1', 'appear' => '1', 'ordering' => '30']);
+        $manageSupervisors->parent_show = $manageSupervisors->id;
+        $manageSupervisors->save();
+        $showProductCoupons =  Permission::create([ 'name' => 'show_supervisors', 'display_name' => 'Supervisors', 'route' => 'supervisors', 'module' => 'supervisors', 'as' => 'supervisors.index', 'icon' => 'fas fa-user', 'parent' => $manageSupervisors->id, 'parent_original' => $manageSupervisors->id, 'parent_show' => $manageSupervisors->id, 'sidebar_link' => '1', 'appear' => '1']);
+        $createProductCoupons =  Permission::create([ 'name' => 'create_supervisors', 'display_name' => 'Create Supervisor', 'route' => 'supervisors', 'module' => 'supervisors', 'as' => 'supervisors.create', 'icon' => null, 'parent' => $manageSupervisors->id, 'parent_original' => $manageSupervisors->id, 'parent_show' => $manageSupervisors->id, 'sidebar_link' => '1', 'appear' => '0']);
+        $displayProductCoupons =  Permission::create([ 'name' => 'display_supervisors', 'display_name' => 'Show Supervisor', 'route' => 'supervisors', 'module' => 'supervisors', 'as' => 'supervisors.show', 'icon' => null, 'parent' => $manageSupervisors->id, 'parent_original' => $manageSupervisors->id, 'parent_show' => $manageSupervisors->id, 'sidebar_link' => '1', 'appear' => '0']);
+        $updateProductCoupons =  Permission::create([ 'name' => 'update_supervisors', 'display_name' => 'Update Supervisor', 'route' => 'supervisors', 'module' => 'supervisors', 'as' => 'supervisors.edit', 'icon' => null, 'parent' => $manageSupervisors->id, 'parent_original' => $manageSupervisors->id, 'parent_show' => $manageSupervisors->id, 'sidebar_link' => '1', 'appear' => '0']);
+        $deleteProductCoupons =  Permission::create([ 'name' => 'delete_supervisors', 'display_name' => 'Delete Supervisor', 'route' => 'supervisors', 'module' => 'supervisors', 'as' => 'supervisors.destroy', 'icon' => null, 'parent' => $manageSupervisors->id, 'parent_original' => $manageSupervisors->id, 'parent_show' => $manageSupervisors->id, 'sidebar_link' => '1', 'appear' => '0']);
 
     }
 }
