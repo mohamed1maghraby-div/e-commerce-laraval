@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\BackendController;
+use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Backend\ProductCategoriesController;
 use App\Http\Controllers\Backend\ProductController;
@@ -49,5 +50,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){
         Route::resource('tags', TagController::class);
         Route::resource('product_coupons', ProductCouponController::class);
         Route::resource('product_reviews', ProductReviewController::class);
+        Route::resource('customers', CustomerController::class);
     });
 });

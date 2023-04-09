@@ -77,17 +77,22 @@
             showUpload: false,
             overwriteInitial: false,
             initialPreview: [
-                "{{ asset('assets/product_categories/'. $productCategory->cover) }}",
+                @if ($productCategory->cover != '')
+                    "{{ asset('assets/product_categories/'. $productCategory->cover) }}",
+                @endif
             ],
             initialPreviewAsData: true,
             initialPreviewFileType: 'image',
             initialPreviewConfig: [
+                @if ($productCategory->cover != '')
                 {
                     caption: "{{ $productCategory->cover }}",
                     size: '1111',
                     width: "120px",
                     url: "{{ route('admin.product_categories.remove_image', ['product_category_id' => $productCategory->id, '_token' => csrf_token()]) }}",
-                    key: {{ $productCategory->id }}}
+                    key: {{ $productCategory->id }}
+                }
+                @endif
             ]
         });
     });

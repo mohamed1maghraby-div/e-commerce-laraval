@@ -11,10 +11,11 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Mindscms\Entrust\Traits\EntrustUserWithPermissionsTrait;
+use Nicolaslopezj\Searchable\SearchableTrait;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable, EntrustUserWithPermissionsTrait;
+    use HasApiTokens, HasFactory, Notifiable, EntrustUserWithPermissionsTrait, SearchableTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -53,6 +54,16 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
+    public $searchable = [
+        'columns' => [
+            'user.first_name' => 10,
+            'user.last_name' => 10,
+            'user.username' => 10,
+            'user.email' => 10,
+            'user.mobile' => 10,
+        ]
+    ];
+
     public function getFullNameAttribute(): string
     {
         return ucfirst($this->first_name) . ' ' . ucfirst($this->last_name);
@@ -61,5 +72,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function rewiews(): HasMany
     {
         return $this->hasMany(ProductReview::class);
+    }
+
+    public function status(): string
+    {
+        return $this->status ? 'Active' : 'Inactive';
     }
 }
