@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\CustomerAddressController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\BackendController;
@@ -56,13 +57,17 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){
         Route::resource('product_reviews', ProductReviewController::class);
 
         Route::post('/customers/remove-image', [CustomerController::class, 'remove_image'])->name('customers.remove_image');
+        Route::get('/customers/get_customer', [CustomerController::class, 'get_customer'])->name('customers.get_customer');
         Route::resource('customers', CustomerController::class);
+        Route::resource('customer_addresses', CustomerAddressController::class);
         
         Route::post('/supervisors/remove-image', [SupervisorController::class, 'remove_image'])->name('products.remove_image');
         Route::resource('supervisors', SupervisorController::class);
 
         Route::resource('countries', CountryController::class);
+        Route::get('states/get_states', [StateController::class, 'get_states'])->name('states.get_states');
         Route::resource('states', StateController::class);
+        Route::get('cities/get_cities', [CityController::class, 'get_cities'])->name('cities.get_cities');
         Route::resource('cities', CityController::class);
     });
 });

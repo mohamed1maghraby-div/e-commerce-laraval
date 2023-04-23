@@ -33,6 +33,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
     ];
 
+    protected $table = 'users';
+
     protected $appends = ['full_name'];
 
     /**
@@ -56,11 +58,11 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public $searchable = [
         'columns' => [
-            'user.first_name' => 10,
-            'user.last_name' => 10,
-            'user.username' => 10,
-            'user.email' => 10,
-            'user.mobile' => 10,
+            'users.first_name' => 10,
+            'users.last_name' => 10,
+            'users.username' => 10,
+            'users.email' => 10,
+            'users.mobile' => 10,
         ]
     ];
 
@@ -73,9 +75,15 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(ProductReview::class);
     }
-
+    
+    public function addresses(): HasMany
+    {
+        return $this->hasMany(UserAddress::class);
+    }
+    
     public function status(): string
     {
         return $this->status ? 'Active' : 'Inactive';
     }
+
 }

@@ -111,4 +111,10 @@ class CityController extends Controller
             'alert_type' =>'success'
         ]);
     }
+
+    public function get_cities(Request $request)
+    {
+        $cities = City::whereStateId($request->state_id)->whereStatus(true)->get(['id', 'name'])->toArray();
+        return response()->json($cities);
+    }
 }

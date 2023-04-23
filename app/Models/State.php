@@ -22,6 +22,11 @@ class State extends Model
 
     public $timestamps = false;
 
+    public function status()
+    {
+        return $this->status ? 'Active' : 'Inactive';
+    }
+
     public function cities(): HasMany
     {
         return $this->hasMany(City::class);
@@ -32,8 +37,8 @@ class State extends Model
         return $this->belongsTo(Country::class);
     }
 
-    public function status()
+    public function addresses(): HasMany
     {
-        return $this->status ? 'Active' : 'Inactive';
+        return $this->hasMany(UserAddress::class);
     }
 }
