@@ -34,6 +34,8 @@
     <link rel="stylesheet" href="{{ asset('frontend/vendor/swiper/swiper-bundle.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/style.default.css') }}" id="theme-stylesheet">
     <link rel="stylesheet" href="{{ asset('frontend/css/custom.css') }}">
+    <livewire:styles />
+    @yield('style')
 </head>
 
 <body>
@@ -83,7 +85,8 @@
             injectSvgSprite('https://bootstraptemple.com/files/icons/orion-svg-sprite.svg'); 
             
     </script>
-
+    <livewire:scripts />
+    @yield('script')
 </body>
 
 </html>
