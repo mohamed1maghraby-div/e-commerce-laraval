@@ -30,7 +30,6 @@ class EntrustSeeder extends Seeder
             'email_verified_at' => now(),
             'mobile' => '96650000000',
             'password' => bcrypt('123456789'),
-            'user_image' => 'avatar.svg',
             'status' => 1,
             'remember_token' => Str::random(10),
         ]);
@@ -44,7 +43,6 @@ class EntrustSeeder extends Seeder
             'email_verified_at' => now(),
             'mobile' => '96650000001',
             'password' => bcrypt('123456789'),
-            'user_image' => 'avatar.svg',
             'status' => 1,
             'remember_token' => Str::random(10),
         ]);
@@ -58,7 +56,6 @@ class EntrustSeeder extends Seeder
             'email_verified_at' => now(),
             'mobile' => '96650000002',
             'password' => bcrypt('123456789'),
-            'user_image' => 'avatar.svg',
             'status' => 1,
             'remember_token' => Str::random(10),
         ]);
@@ -73,7 +70,6 @@ class EntrustSeeder extends Seeder
                 'email_verified_at' => now(),
                 'mobile' => '96650'. $faker->numberBetween(1000000, 9999999),
                 'password' => bcrypt('123456789'),
-                'user_image' => 'avatar.svg',
                 'status' => 1,
                 'remember_token' => Str::random(10),
             ]);

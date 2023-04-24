@@ -150,7 +150,7 @@ class SupervisorController extends Controller
             $supervisor->permissions()->sync($request->permissions);
         }
 
-        return redirect()->route('admin.product_categories.index')->with([
+        return redirect()->route('admin.supervisor.index')->with([
             'message' => 'Updated successfully',
             'alert_type' => 'success'
         ]);
