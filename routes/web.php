@@ -12,6 +12,7 @@ use App\Http\Controllers\Backend\ProductCategoriesController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ProductCouponController;
 use App\Http\Controllers\Backend\ProductReviewController;
+use App\Http\Controllers\Backend\ShippingCompanyController;
 use App\Http\Controllers\Backend\StateController;
 use App\Http\Controllers\Backend\SupervisorController;
 use App\Http\Controllers\Backend\TagController;
@@ -69,5 +70,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){
         Route::resource('states', StateController::class);
         Route::get('cities/get_cities', [CityController::class, 'get_cities'])->name('cities.get_cities');
         Route::resource('cities', CityController::class);
+        
+        Route::resource('shipping_companies', ShippingCompanyController::class);
+
     });
 });
