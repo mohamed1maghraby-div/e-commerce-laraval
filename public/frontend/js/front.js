@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	/* ===============================================================
     	 COUNTRY SELECT BOX FILLING
   	=============================================================== */
-	const request = new XMLHttpRequest();
+/* 	const request = new XMLHttpRequest();
 	request.open('GET', 'js/countries.json');
 	request.onload = function () {
 		if (request.status >= 200 && request.status < 400) {
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			}
 		}
 	};
-	request.send();
+	request.send(); */
 
 	/* ===============================================================
 		GLIGHTBOX
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	/* ===============================================================
          PRODUCT QUNATITY
       =============================================================== */
-	document.querySelectorAll('.dec-btn').forEach((el) => {
+	/* document.querySelectorAll('.dec-btn').forEach((el) => {
 		el.addEventListener('click', () => {
 			var siblings = el.parentElement.querySelector('input');
 			if (parseInt(siblings.value, 10) >= 1) {
@@ -110,5 +110,5 @@ document.addEventListener('DOMContentLoaded', function () {
 			var siblings = el.parentElement.querySelector('input');
 			siblings.value = parseInt(siblings.value, 10) + 1;
 		});
-	});
+	}); */
 });

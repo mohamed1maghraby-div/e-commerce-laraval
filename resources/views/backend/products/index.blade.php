@@ -22,7 +22,7 @@
                     <tr>
                         <th>Image</th>
                         <th>Name</th>
-                        <th>Feature</th>
+                        <th>Featured</th>
                         <th>Quantity</th>
                         <th>Price</th>
                         <th>Tags</th>
@@ -42,7 +42,7 @@
                                 @endif
                             </td>
                             <td>{{ $product->name }}</td>
-                            <td>{{ $product->feature() }}</td>
+                            <td>{{ $product->featured() }}</td>
                             <td>{{ $product->quantity }}</td>
                             <td>{{ $product->price }}</td>
                             <td>{{ $product->tags->pluck('name')->join(', ') }}</td>

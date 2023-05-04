@@ -62,5 +62,10 @@ class ProductCategory extends Model
             ->get();
     }
 
+    /* public function subCategories()
+    {
+        return $this->hasMany(ProductCategory::class)->with('subCategories');
+    } */
+
 
 }

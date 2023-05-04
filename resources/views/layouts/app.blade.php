@@ -49,7 +49,6 @@
         @include('partial.frontend.footer')
     </div>
 
-   @include('partial.frontend.model')
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <script src="{{ asset('backend/vendor/jquery/jquery.min.js') }}"></script>
@@ -86,6 +85,9 @@
             
     </script>
     <livewire:scripts />
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <x-livewire-alert::scripts />
+    
     @yield('script')
 </body>
 

@@ -29,10 +29,10 @@ use App\Http\Controllers\Backend\TagController;
 */
 
 Route::get('/', [FrontendController::class, 'index'])->name('frontend.index');
-Route::get('/cart', [FrontendController::class, 'cart'])->name('frontend.cart');
-Route::get('/checkout', [FrontendController::class, 'checkout'])->name('frontend.checkout');
-Route::get('/detail', [FrontendController::class, 'detail'])->name('frontend.detail');
 Route::get('/shop', [FrontendController::class, 'shop'])->name('frontend.shop');
+Route::get('/cart', [FrontendController::class, 'cart'])->name('frontend.cart');
+Route::get('/product/{slug?}', [FrontendController::class, 'product'])->name('frontend.product');
+Route::get('/checkout', [FrontendController::class, 'checkout'])->name('frontend.checkout');
 
 
 Auth::routes(['verify' => true]);
