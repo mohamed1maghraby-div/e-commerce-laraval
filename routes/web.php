@@ -29,7 +29,8 @@ use App\Http\Controllers\Backend\TagController;
 */
 
 Route::get('/', [FrontendController::class, 'index'])->name('frontend.index');
-Route::get('/shop', [FrontendController::class, 'shop'])->name('frontend.shop');
+Route::get('/shop/{slug?}', [FrontendController::class, 'shop'])->name('frontend.shop');
+Route::get('/shop/tags/{slug}', [FrontendController::class, 'shop_tag'])->name('frontend.shop_tag');
 Route::get('/cart', [FrontendController::class, 'cart'])->name('frontend.cart');
 Route::get('/product/{slug?}', [FrontendController::class, 'product'])->name('frontend.product');
 Route::get('/checkout', [FrontendController::class, 'checkout'])->name('frontend.checkout');

@@ -22,6 +22,15 @@ class FrontendController extends Controller
         ->get();
         return view('frontend.index', compact('product_categories', 'featured_products'));
     }
+    public function shop($slug = null)
+    {
+        return view('frontend.shop', compact('slug'));
+    }
+    public function shop_tag($slug = null)
+    {
+        return view('frontend.shop_tag', compact('slug'));
+    }
+
     public function product($slug)
     {
         $product = Product::with('media', 'category', 'tags', 'reviews')->withAvg('reviews', 'rating')->whereSlug($slug)->Active()->HasQuantity()->ActiveCategory()->firstOrFail();
@@ -39,8 +48,5 @@ class FrontendController extends Controller
     {
         return view('frontend.checkout');
     }
-    public function shop()
-    {
-        return view('frontend.shop');
-    }
+
 }
