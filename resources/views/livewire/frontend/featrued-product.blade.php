@@ -47,6 +47,5 @@
         @endforelse
 
     </div>
-    <livewire:frontend.product-model-shared />
   </section>
 </div>

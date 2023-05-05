@@ -49,6 +49,7 @@
         @include('partial.frontend.footer')
     </div>
 
+    <livewire:frontend.product-model-shared />
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <script src="{{ asset('backend/vendor/jquery/jquery.min.js') }}"></script>

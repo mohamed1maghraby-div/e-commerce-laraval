@@ -26,7 +26,7 @@
 
 
                     <div class="col-lg-6">
-                        <div class="p-4 my-md-4">
+                        <div wire:ignore class="p-4 my-md-4">
                           <ul class="list-inline mb-2">
                             @if ($productModal->reviews_avg_rating != '')
                             @for ($i=0; $i<5; $i++)
