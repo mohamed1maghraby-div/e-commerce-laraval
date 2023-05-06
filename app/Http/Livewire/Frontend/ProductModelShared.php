@@ -42,6 +42,7 @@ class ProductModelShared extends Component
         }else{
             Cart::instance('default')->add( $this->productModal->id, $this->productModal->name, $this->productModal->quantity, $this->productModal->price )->associate(Product::class);
             $this->quantity = 1;
+            $this->emit('updateCart');
             $this->alert('success', 'Product added in your cart successfully.');
         }
     }
@@ -55,6 +56,7 @@ class ProductModelShared extends Component
             $this->alert('error', 'Product already exists!');
         }else{
             Cart::instance('wishlist')->add( $this->productModal->id, $this->productModal->name, 1, $this->productModal->price )->associate(Product::class);
+            $this->emit('updateCart');
             $this->alert('success', 'Product added in your wishlist cart successfully.');
         }
     }

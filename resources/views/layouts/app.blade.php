@@ -51,7 +51,8 @@
 
     <livewire:frontend.product-model-shared />
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
+    @vite(['resources/js/app.js'])
     <script src="{{ asset('backend/vendor/jquery/jquery.min.js') }}"></script>
     <!-- JavaScript files-->
     <script src="{{ asset('frontend/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>

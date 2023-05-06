@@ -21,6 +21,7 @@ class FeatruedProduct extends Component
             $this->alert('error', 'Product already exists!');
         }else{
             Cart::instance('default')->add( $product->id, $product->name, 1, $product->price )->associate(Product::class);
+            $this->emit('updateCart');
             $this->alert('success', 'Product added in your cart successfully.');
         }
     }
@@ -35,6 +36,7 @@ class FeatruedProduct extends Component
             $this->alert('error', 'Product already exists!');
         }else{
             Cart::instance('wishlist')->add( $product->id, $product->name, 1, $product->price )->associate(Product::class);
+            $this->emit('updateCart');
             $this->alert('success', 'Product added in your wishlist cart successfully.');
         }
     }
