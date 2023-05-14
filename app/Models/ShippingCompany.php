@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Nicolaslopezj\Searchable\SearchableTrait;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class ShippingCompany extends Model
 {
@@ -33,6 +34,11 @@ class ShippingCompany extends Model
     public function countries(): BelongsToMany
     {
         return $this->belongsToMany(Country::class, 'shipping_company_country', 'shipping_company_id', 'country_id');
+    }
+
+    public function orders(): HasMany
+    {
+        return $this->hasMany(Order::class);
     }
 
 
