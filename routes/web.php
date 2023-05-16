@@ -1,22 +1,23 @@
 <?php
 
-use App\Http\Controllers\Backend\CustomerAddressController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Backend\BackendController;
+use App\Http\Controllers\Backend\TagController;
 use App\Http\Controllers\Backend\CityController;
+use App\Http\Controllers\Backend\StateController;
+use App\Http\Controllers\Backend\BackendController;
 use App\Http\Controllers\Backend\CountryController;
-use App\Http\Controllers\Backend\CustomerController;
-use App\Http\Controllers\Backend\PaymentMethodController;
-use App\Http\Controllers\Frontend\FrontendController;
-use App\Http\Controllers\Backend\ProductCategoriesController;
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\CustomerController;
+use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Controllers\Frontend\PaymentCobntroller;
+use App\Http\Controllers\Backend\SupervisorController;
+use App\Http\Controllers\Backend\PaymentMethodController;
 use App\Http\Controllers\Backend\ProductCouponController;
 use App\Http\Controllers\Backend\ProductReviewController;
+use App\Http\Controllers\Backend\CustomerAddressController;
 use App\Http\Controllers\Backend\ShippingCompanyController;
-use App\Http\Controllers\Backend\StateController;
-use App\Http\Controllers\Backend\SupervisorController;
-use App\Http\Controllers\Backend\TagController;
+use App\Http\Controllers\Backend\ProductCategoriesController;
 
 /*
 |--------------------------------------------------------------------------
