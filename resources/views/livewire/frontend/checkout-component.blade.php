@@ -57,42 +57,42 @@
       @endif
 
       @if ($customer_address_id != 0 && $shipping_company_id != 0)
-        <h2 class="h5 text-uppercase mb-4">Payment way</h2>
-        <div class="row">
-          @forelse ($payment_methods as $payment_method)
-            <div class="col-6 form-group">
-              <div class="custom-control custom-radio">
-                <input 
-                  type="radio"
-                  id="payment-method-{{ $payment_method->id }}"
-                  class="custom-control-input"
-                  wire:model="payment_method_id"
-                  wire:click="updatePaymentMethod()"
-                  {{ intval($payment_method_id) == $payment_method->id ? 'checked' : '' }}
-                  value="{{ $payment_method->id }}">
-                  <label for="payment-method-{{ $payment_method->id }}" class="custom-control-label text-small">
-                    <b>{{ $payment_method->name }}</b>
-                  </label>
-              </div>
+            <h2 class="h5 text-uppercase mb-4">Payment way</h2>
+            <div class="row">
+                @forelse($payment_methods as $payment_method)
+                    <div class="col-6 form-group">
+                        <div class="custom-control custom-radio">
+                            <input
+                                type="radio"
+                                id="payment-method-{{ $payment_method->id }}"
+                                class="custom-control-input"
+                                wire:model="payment_method_id"
+                                wire:click="updatePaymentMethod()"
+                                {{ intval($payment_method_id) == $payment_method->id ? 'checked' : '' }}
+                                value="{{ $payment_method->id }}">
+                            <label for="payment-method-{{ $payment_method->id }}" class="custom-control-label text-small">
+                                <b>{{ $payment_method->name }}</b>
+                            </label>
+                        </div>
+                    </div>
+                @empty
+                    <p>No payment way found</p>
+                @endforelse
             </div>
-          @empty
-            <p>No payment way found</p>
-          @endforelse
-        </div>
-      @endif
-
-      @if ($customer_address_id != 0 && $shipping_company_id != 0 && $payment_method_id != 0)
-        @if (\Str::lower($payment_method_code) == 'ppex')
-          <form action="{{ route('checkout.payment') }}" method="post">
-            @csrf
-          <input type="text" name="customer_address_id" value="{{ old('customer_address_id', $customer_address_id) }}" class="form-control"/>
-          <input type="text" name="shipping_company_id" value="{{ old('shipping_company_id', $shipping_company_id) }}" class="form-control"/>
-          <input type="text" name="payment_method_id" value="{{ old('payment_method_id', $payment_method_id) }}" class="form-control"/>
-          <button type="submit" name="submit" class="btn btn-dark btn-sm btn-block">
-            Continue to checkout with PayPal
-          </button>
-        </form>
         @endif
+
+        @if ($customer_address_id != 0 && $shipping_company_id != 0 && $payment_method_id != 0)
+          @if (\Str::lower($payment_method_code) == 'ppex')
+            <form action="{{ route('checkout.payment') }}" method="post">
+              @csrf
+            <input type="hidden" name="customer_address_id" value="{{ old('customer_address_id', $customer_address_id) }}" class="form-control"/>
+            <input type="hidden" name="shipping_company_id" value="{{ old('shipping_company_id', $shipping_company_id) }}" class="form-control"/>
+            <input type="hidden" name="payment_method_id" value="{{ old('payment_method_id', $payment_method_id) }}" class="form-control"/>
+            <button type="submit" name="submit" class="btn btn-dark btn-sm btn-block">
+              Continue to checkout with PayPal
+            </button>
+          </form>
+          @endif
       @endif
 
 

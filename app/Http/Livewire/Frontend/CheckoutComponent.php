@@ -131,6 +131,7 @@ class CheckoutComponent extends Component
     {
         session()->forget('saved_shipping_company_id');
         session()->put('saved_shipping_company_id', $this->customer_address_id);
+
         $this->customer_address_id = session()->has('saved_customer_address_id') ? session()->get('saved_customer_address_id') : '';
         $this->shipping_company_id = session()->has('saved_shipping_company_id') ? session()->get('saved_shipping_company_id') : '';
         $this->payment_method_id = session()->has('saved_payment_method_id') ? session()->get('saved_payment_method_id') : '';
@@ -140,7 +141,8 @@ class CheckoutComponent extends Component
     public function updatedShippingCompanyId()
     {
         session()->forget('saved_shipping_company_id');
-        session()->put('saved_shipping_company_id', $this->customer_address_id);
+        session()->put('saved_shipping_company_id', $this->shipping_company_id);
+
         $this->customer_address_id = session()->has('saved_customer_address_id') ? session()->get('saved_customer_address_id') : '';
         $this->shipping_company_id = session()->has('saved_shipping_company_id') ? session()->get('saved_shipping_company_id') : '';
         $this->payment_method_id = session()->has('saved_payment_method_id') ? session()->get('saved_payment_method_id') : '';
@@ -155,12 +157,13 @@ class CheckoutComponent extends Component
             'cost' => $selectedShippingCompany->cost
         ]);
         $this->emit('updateCart');
-        $this->alert('success', 'Your shipping cost is applied successfully');
+        $this->alert('success', 'Your shipping costs is applied successfully');
+
     }
 
-    public  function updatePaymentMethod()
+    public function updatePaymentMethod()
     {
-        $payment_method = PaymentMethod::whereId($this->payment_method_id)->first();
+        $payment_method = PaymentMethod::whereId(1)->first();
         $this->payment_method_code = $payment_method->code;
     }
     public function render()

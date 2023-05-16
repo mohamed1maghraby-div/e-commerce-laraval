@@ -25,8 +25,8 @@ class PaymentMethodSeeder extends Seeder
             'sandbox_username' => null,
             'sandbox_password' => null,
             'sandbox_secret' => null,
-            'sandbox' => null,
-            'status' => null
+            'sandbox' => true,
+            'status' => true
         ]);
     }
 }
