@@ -10,7 +10,7 @@ use App\Http\Controllers\Backend\CountryController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Frontend\FrontendController;
-use App\Http\Controllers\Frontend\PaymentCobntroller;
+use App\Http\Controllers\Frontend\PaymentController;
 use App\Http\Controllers\Backend\SupervisorController;
 use App\Http\Controllers\Backend\PaymentMethodController;
 use App\Http\Controllers\Backend\ProductCouponController;
@@ -39,11 +39,11 @@ Route::get('/product/{slug?}', [FrontendController::class, 'product'])->name('fr
 
 Route::group(['middleware' => ['roles', 'role:customer']], function(){
     Route::get('/checkout', [FrontendController::class, 'checkout'])->name('frontend.checkout');
-    Route::post('/checkout/payment', [PaymentCobntroller::class, 'checkout_now'])->name('checkout.payment');
+    Route::post('/checkout/payment', [PaymentController::class, 'checkout_now'])->name('checkout.payment');
 
-    Route::get('/checkout/{order_id}/cancelled', [PaymentCobntroller::class, 'cancelled'])->name('checkout.cancel');
-    Route::get('/checkout/{order_id}/completed', [PaymentCobntroller::class, 'completed'])->name('checkout.complete');
-    Route::get('/checkout/webhook/{order?}/{env?}', [PaymentCobntroller::class, 'webhook'])->name('checkout.webhook.ipn');
+    Route::get('/checkout/{order_id}/cancelled', [PaymentController::class, 'cancelled'])->name('checkout.cancel');
+    Route::get('/checkout/{order_id}/completed', [PaymentController::class, 'completed'])->name('checkout.complete');
+    Route::get('/checkout/webhook/{order?}/{env?}', [PaymentController::class, 'webhook'])->name('checkout.webhook.ipn');
 });
 
 

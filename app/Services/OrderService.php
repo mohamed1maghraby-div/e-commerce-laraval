@@ -44,10 +44,7 @@ class OrderService
             $product->update([ 'quantity' => $product->quantity - $item->qty ]);
         }
 
-        if(session()->has('coupon')){
-            $coupon = ProductCoupon::whereCode(session()->get('coupon')['code'])->first();
-            $coupon->increment('used_times');
-        }
+        
 
         $order->transactions()->create([
             'transaction' => OrderTransaction::NEW_ORDER
