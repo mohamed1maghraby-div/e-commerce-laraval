@@ -15,7 +15,7 @@
                     <li class="nav-item">
                         <!-- Link--><a class="nav-link" href="{{ route('frontend.shop') }}">Shop</a>
                     </li>
-                    <li class="nav-item">
+{{--                     <li class="nav-item">
                         <!-- Link--><a class="nav-link" href="{{ route('frontend.product') }}">Product detail</a>
                     </li>
                     <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="pagesDropdown"
@@ -29,7 +29,7 @@
                                 href="{{ route('frontend.cart') }}">Shopping cart</a><a
                                 class="dropdown-item border-0 transition-link" href="{{ route('frontend.checkout') }}">Checkout</a>
                         </div>
-                    </li>
+                    </li> --}}
                 </ul>
                 <ul class="navbar-nav ms-auto">
                     <livewire:frontend.carts />
@@ -45,7 +45,7 @@
                                     Welcome, {{ auth()->user()->full_name }}
                                 </a>
                                 <div class="dropdown-menu mt-3" aria-labelledby="authDropdown">
-                                    <a href="#" class="dropdown-item border-0">My Profile</a>
+                                    <a href="{{ route('customer.profile') }}" class="dropdown-item border-0">My Profile</a>
                                     <a href="javascript:void(0);" class="dropdown-item border-0"
                                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                                     >Logout</a>
