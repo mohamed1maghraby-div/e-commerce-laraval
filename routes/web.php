@@ -41,7 +41,7 @@ Route::group(['middleware' => ['roles', 'role:customer']], function(){
     Route::get('/dashboard', [FrontendCustomerController::class, 'dashboard'])->name('customer.dashboard');
     Route::get('/profile', [FrontendCustomerController::class, 'profile'])->name('customer.profile');
     Route::patch('/profile', [FrontendCustomerController::class, 'update_profile'])->name('customer.update_profile');
-    Route::get('/remove_profile_image', [FrontendCustomerController::class, 'remove_profile_image'])->name('customer.remove_profile_image');
+    Route::get('/profile/remove-image', [FrontendCustomerController::class, 'remove_profile_image'])->name('customer.remove_profile_image');
     Route::get('/addresses', [FrontendCustomerController::class, 'addresses'])->name('customer.addresses');
     Route::get('/orders', [FrontendCustomerController::class, 'orders'])->name('customer.orders');
 

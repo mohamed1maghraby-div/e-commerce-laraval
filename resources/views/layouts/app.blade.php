@@ -52,7 +52,12 @@
     <livewire:frontend.product-model-shared />
     <!-- Scripts -->
     {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
+    
+    <livewire:scripts />
+    <x-livewire-alert::scripts />
     @vite(['resources/js/app.js'])
+    {{-- alpinejs --}}
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.1/dist/cdn.min.js"></script>
     <script src="{{ asset('backend/vendor/jquery/jquery.min.js') }}"></script>
     <!-- JavaScript files-->
     <script src="{{ asset('frontend/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -86,9 +91,7 @@
             injectSvgSprite('https://bootstraptemple.com/files/icons/orion-svg-sprite.svg'); 
             
     </script>
-    <livewire:scripts />
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <x-livewire-alert::scripts />
+
     @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
 
     @yield('script')
