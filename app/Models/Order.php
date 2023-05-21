@@ -52,6 +52,10 @@ class Order extends Model
     const REFUNDED = 7;
     const RETURNED = 8;
 
+    public function getCurrencyAttribute($value): string
+    {
+        return $value == 'USD' ? '$' : $value;
+    }
 
     public function user(): BelongsTo
     {
