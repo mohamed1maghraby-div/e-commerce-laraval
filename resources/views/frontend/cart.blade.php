@@ -51,8 +51,13 @@
         <div class="row align-items-center text-center">
           <div class="col-md-6 mb-3 mb-md-0 text-md-start"><a class="btn btn-link p-0 text-dark btn-sm"
               href="{{ route('frontend.shop') }}"><i class="fas fa-long-arrow-alt-left me-2"> </i>Continue shopping</a></div>
-          <div class="col-md-6 text-md-end"><a class="btn btn-outline-dark btn-sm" href="{{ route('frontend.checkout') }}">Proceed to
-              checkout<i class="fas fa-long-arrow-alt-right ms-2"></i></a></div>
+          <div class="col-md-6 text-md-end">
+            @if (\Gloudemans\Shoppingcart\Facades\Cart::instance('default')->count() > 0)
+              <a class="btn btn-outline-dark btn-sm" href="{{ route('frontend.checkout') }}">
+                Proceed to checkout<i class="fas fa-long-arrow-alt-right ms-2"></i>
+              </a>
+            @endif
+          </div>
         </div>
       </div>
     </div>

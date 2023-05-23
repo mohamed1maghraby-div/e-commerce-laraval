@@ -83,6 +83,40 @@
                     </tbody>
                 </table>
             </div>
+
+            <h2 class="h5 text-uppercase">Transactions</h2>
+            <div class="table-responsive mb-4">
+                <table class="table">
+                    <thead class="bg-light">
+                        <tr>
+                            <th class="border-0" scope="col"><strong class="text-small text-uppercase">Transaction</strong></th>
+                            <th class="border-0" scope="col"><strong class="text-small text-uppercase">Date</strong></th>
+                            {{-- <th class="border-0" scope="col"><strong class="text-small text-uppercase">Days</strong></th> --}}
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($order->transactions as $transaction)
+                            <tr>
+                                <td>{{ $transaction->status($transaction->transaction) }}</td>
+                                <td>{{ $transaction->created_at->format('Y-m-d') }}</td>
+                                {{-- <td>{{ \Carbon\Carbon::now()->addDays(5)->diffInDays($transaction->created_at->format('Y-m-d')) }}</td> --}}
+                                <td>
+                                    @if (
+                                        $loop->last &&
+                                        $transaction->transaction == \App\Models\OrderTransaction::FINISHED &&
+                                        \Carbon\Carbon::now()->addDays(5)->diffInDays($transaction->created_at->format('Y-m-d')) != 0 // 5 أيام للأسترجاع
+                                    )
+                                    <button class="btn btn-link text-right">
+                                        you can return order in {{ 5 - $transaction->created_at->diffInDays() }} days
+                                    </button>    
+                                    @endif
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>

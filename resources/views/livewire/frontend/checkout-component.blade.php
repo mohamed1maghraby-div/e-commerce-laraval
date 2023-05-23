@@ -111,8 +111,15 @@
             @if (session()->has('coupon'))
               <li class="border-bottom my-2"></li>
               <li class="d-flex align-items-center justify-content-between">
-                  <strong class="small fw-bold">Discount <small>({{ session()->get('coupon')['code'] }})</small></strong>
+                  <strong class="small fw-bold">Discount <small>({{ getNumbers()->get('discount_code') }})</small></strong>
                   <span class="text-muted small">- ${{ $cart_discount }}</span>
+              </li>
+            @endif
+            @if (session()->has('shipping'))
+              <li class="border-bottom my-2"></li>
+              <li class="d-flex align-items-center justify-content-between">
+                  <strong class="small fw-bold">Shipping <small>({{ getNumbers()->get('shipping_code') }})</small></strong>
+                  <span class="text-muted small">${{ $cart_shipping }}</span>
               </li>
             @endif
 

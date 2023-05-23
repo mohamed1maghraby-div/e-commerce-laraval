@@ -27,9 +27,10 @@ class OrderTransaction extends Model
         return $this->belongsTo(Order::class);
     }
 
-    public function status()
+    public function status($transaction_number = null)
     {
-        switch ($this->order_status){
+        $transaction = $transaction_number != '' ? $transaction_number : $this->transaction; //$this->transaction get from database
+        switch ($transaction){
             case 0: $result = 'New order'; break;
             case 1: $result = 'Paid'; break;
             case 2: $result = 'Under process'; break;

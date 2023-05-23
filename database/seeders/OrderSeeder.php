@@ -42,7 +42,7 @@ class OrderSeeder extends Seeder
         //create order products
         $order->products()->attach($products->pluck('id')->toArray());
         //create order transactions
-        $order->transactions()->createMany(
+        $order->transactions()->createMany([
             [
                 'transaction' => Order::NEW_ORDER,
                 'transaction_number' => null,
@@ -53,6 +53,6 @@ class OrderSeeder extends Seeder
                 'transaction_number' => Str::random(15),
                 'payment_result' => 'success',
             ],
-        );
+        ]);
     }
 }
