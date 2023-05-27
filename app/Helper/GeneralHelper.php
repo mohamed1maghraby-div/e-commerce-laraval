@@ -5,19 +5,22 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 
 function getParentShowOf($param){
     $route = str_replace('admin.', '', $param);
-    $permission = Cache::get('admin_side_menu')->where('as' ,$route)->first();
-    return $permission ? $permission->parent_show: $route;
+    $permission = collect(Cache::get('admin_side_menu')->pluck('children')->flatten())
+    ->where('as' ,$route)->flatten()->first();
+    return $permission ? $permission['parent_show'] : null;
 }
 
 function getParentOf($param){
     $route = str_replace('admin.', '', $param);
-    $permission = Cache::get('admin_side_menu')->where('as', $route)->first();
-    return $permission ? $permission->parent : $route;
+    $permission = collect(Cache::get('admin_side_menu')->pluck('children')->flatten())
+    ->where('as' ,$route)->flatten()->first();
+    return $permission ? $permission['parent'] : $route;
 }
 function getParentIdOf($param){
     $route = str_replace('admin.', '', $param);
-    $permission = Cache::get('admin_side_menu')->where('as', $route)->first();
-    return $permission ? $permission->id : null;
+    $permission = collect(Cache::get('admin_side_menu')->pluck('children')->flatten())
+    ->where('as' ,$route)->flatten()->first();
+    return $permission ? $permission['id'] : null;
 }
 
 function getNumbers()

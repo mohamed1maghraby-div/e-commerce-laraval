@@ -49,8 +49,8 @@ class Order extends Model
     const REJECTED = 4;
     const CANCELED = 5;
     const REFUNDED_REQUEST = 6;
-    const REFUNDED = 7;
-    const RETURNED = 8;
+    const RETURNED = 7;
+    const REFUNDED = 8;
 
     public function getCurrencyAttribute($value): string
     {
@@ -92,8 +92,8 @@ class Order extends Model
             case 4: $result = 'Rejected'; break;
             case 5: $result = 'Canceled'; break;
             case 6: $result = 'Refund requested'; break;
-            case 7: $result = 'Refunded'; break;
-            case 8: $result = 'Returned order'; break;
+            case 7: $result = 'Returned order'; break;
+            case 8: $result = 'Refunded'; break;
         }
         return $result;
     }
@@ -107,8 +107,8 @@ class Order extends Model
             case 4: $result = '<label class="badge badge-success">Rejected</label>'; break;
             case 5: $result = '<label class="badge badge-success">Canceled</label>'; break;
             case 6: $result = '<label class="badge badge-success">Refund requested</label>'; break;
-            case 7: $result = '<label class="badge badge-success">Refunded</label>'; break;
-            case 8: $result = '<label class="badge badge-success">Returned order</label>'; break;
+            case 7: $result = '<label class="badge badge-success">Returned order</label>'; break;
+            case 8: $result = '<label class="badge badge-success">Refunded</label>'; break;
         }
         return $result;
     }

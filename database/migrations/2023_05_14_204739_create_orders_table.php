@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreignId('payment_method_id')->nullable()->constrained()->nullOnDelete();
 
             $table->double('subtotal')->default(0.00);
-            $table->double('discount_code')->nullable();
+            $table->string('discount_code')->nullable();
             $table->double('discount')->default(0.00);
             $table->double('shipping')->default(0.00);
             $table->double('tax')->default(0.00);

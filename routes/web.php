@@ -4,10 +4,13 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\TagController;
 use App\Http\Controllers\Backend\CityController;
+use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\StateController;
 use App\Http\Controllers\Backend\BackendController;
 use App\Http\Controllers\Backend\CountryController;
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Frontend\PaymentController;
+use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Backend\SupervisorController;
 use App\Http\Controllers\Backend\PaymentMethodController;
 use App\Http\Controllers\Backend\ProductCouponController;
@@ -16,8 +19,6 @@ use App\Http\Controllers\Backend\CustomerAddressController;
 use App\Http\Controllers\Backend\ShippingCompanyController;
 use App\Http\Controllers\Backend\ProductCategoriesController;
 use App\Http\Controllers\Frontend\CustomerController as FrontendCustomerController;
-use App\Http\Controllers\Frontend\FrontendController;
-use App\Http\Controllers\Frontend\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -87,6 +88,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){
         
         Route::post('/supervisors/remove-image', [SupervisorController::class, 'remove_image'])->name('products.remove_image');
         Route::resource('supervisors', SupervisorController::class);
+
+        Route::resource('orders', OrderController::class);
 
         Route::resource('countries', CountryController::class);
         Route::get('states/get_states', [StateController::class, 'get_states'])->name('states.get_states');

@@ -4,9 +4,12 @@ namespace App\Http\Livewire\Frontend\Customer;
 
 use App\Models\Order;
 use Livewire\Component;
+use App\Models\OrderTransaction;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class OrdersComponent extends Component
 {
+    use LivewireAlert;
     public $showOrder = false;
     public $order;
 
@@ -14,6 +17,19 @@ class OrdersComponent extends Component
     {
         $this->order = Order::with('products')->find($id);
         $this->showOrder = true;
+    }
+
+    public function requestReturnOrder($id)
+    {
+        $order = Order::whereId($id)->first();
+        $order->update([
+            'order_status' => Order::REFUNDED_REQUEST
+        ]);
+        $order->transactions()->create([
+            'transaction' => OrderTransaction::REFUNDED_REQUEST,
+            'transaction_number' => $order->transactions()->whereTransaction(OrderTransaction::PAYMENT_COMPLETED)->first()->transaction_number
+        ]);
+        $this->alert('success', 'Your request is sent successfully.');
     }
     public function render()
     {
