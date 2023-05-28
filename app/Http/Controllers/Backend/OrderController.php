@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Models\User;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Models\OrderTransaction;
 use App\Services\OmnipayService;
 use App\Http\Controllers\Controller;
+use App\Notifications\Backend\Orders\OrderNotification;
 
 class OrderController extends Controller
 {
@@ -101,6 +103,7 @@ class OrderController extends Controller
         if(!auth()->user()->ability('admin', 'update_orders')){
             return redirect()->route('admin.index');
         }
+        $customer = User::find($order->user_id);
 
         if($request->order_status == Order::REFUNDED){
 
@@ -121,6 +124,8 @@ class OrderController extends Controller
                     'payment_result' => 'success'
                 ]);
 
+                $customer->notify(new OrderNotification($order));
+
                 return back()->with([
                     'message' => 'Refunded updated successfully',
                     'alert-type' => 'success',
@@ -134,7 +139,9 @@ class OrderController extends Controller
                 'transaction_number' => null,
                 'payment_result' => null
             ]);
-    
+
+            $customer->notify(new OrderNotification($order));
+
             return back()->with([
                 'message' => 'updated successfully',
                 'alert-type' => 'success',

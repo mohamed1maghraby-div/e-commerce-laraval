@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Backend\Navbar;
+namespace App\Http\Livewire\Frontend\Header;
 
 use Livewire\Component;
 
@@ -30,9 +30,8 @@ class NotificationComponent extends Component
         $notification->markAsRead();
         return redirect()->to($notification->data['order_url']);
     }
-
     public function render()
     {
-        return view('livewire.backend.navbar.notification-component');
+        return view('livewire.frontend.header.notification-component');
     }
 }

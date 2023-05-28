@@ -5057,7 +5057,7 @@ fieldset:disabled .btn {
   border-bottom-right-radius: 0;
 }
 
-/* .badge {
+.badgey {
   display: inline-block;
   padding: 0.35em 0.65em;
   font-size: 0.8em;
@@ -5068,7 +5068,17 @@ fieldset:disabled .btn {
   white-space: nowrap;
   vertical-align: baseline;
   border-radius: 0;
-} */
+}
+
+.badgey-danger {
+  color: #fff;
+  background-color: #dc3545;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  border-radius: 0;
+  font-weight: 400;
+  padding: 0.35rem 0.5rem;
+}
 
 .badge:empty {
   display: none;

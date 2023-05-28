@@ -40,9 +40,11 @@
                             class="fas fa-user me-1 text-gray fw-normal"></i>Register</a></li>
                     @else
                             <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" id="authDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-user-alt mr-1 text-gray"></i>
-                                    Welcome, {{ auth()->user()->full_name }}
+                                <livewire:frontend.header.notification-component />
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" id="authDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{ auth()->user()->full_name }}
                                 </a>
                                 <div class="dropdown-menu mt-3" aria-labelledby="authDropdown">
                                     <a href="{{ route('customer.dashboard') }}" class="dropdown-item border-0">My Dashboard</a>
