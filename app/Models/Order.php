@@ -52,9 +52,9 @@ class Order extends Model
     const RETURNED = 7;
     const REFUNDED = 8;
 
-    public function getCurrencyAttribute($value): string
+    public function currency(): string
     {
-        return $value == 'USD' ? '$' : $value;
+        return $this->currency == 'USD' ? '$' : $this->currency;
     }
 
     public function user(): BelongsTo
@@ -101,14 +101,14 @@ class Order extends Model
     {
         switch ($this->order_status){
             case 0: $result = '<label class="badge badge-success">New order</label>'; break;
-            case 1: $result = '<label class="badge badge-success">Paid</label>'; break;
-            case 2: $result = '<label class="badge badge-success">Under process</label>'; break;
-            case 3: $result = '<label class="badge badge-success">Finished</label>'; break;
-            case 4: $result = '<label class="badge badge-success">Rejected</label>'; break;
-            case 5: $result = '<label class="badge badge-success">Canceled</label>'; break;
-            case 6: $result = '<label class="badge badge-success">Refund requested</label>'; break;
-            case 7: $result = '<label class="badge badge-success">Returned order</label>'; break;
-            case 8: $result = '<label class="badge badge-success">Refunded</label>'; break;
+            case 1: $result = '<label class="badge badge-warning">Paid</label>'; break;
+            case 2: $result = '<label class="badge badge-warning">Under process</label>'; break;
+            case 3: $result = '<label class="badge badge-primary">Finished</label>'; break;
+            case 4: $result = '<label class="badge badge-danger">Rejected</label>'; break;
+            case 5: $result = '<label class="badge badge-dark text-white">Canceled</label>'; break;
+            case 6: $result = '<label class="badge badge-dark text-white">Refund requested</label>'; break;
+            case 7: $result = '<label class="badge badge-slate">Returned order</label>'; break;
+            case 8: $result = '<label class="badge badge-dark text-white">Refunded</label>'; break;
         }
         return $result;
     }

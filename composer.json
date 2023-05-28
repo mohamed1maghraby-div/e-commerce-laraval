@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
+        "beyondcode/laravel-websockets": "^1.14",
         "cviebrock/eloquent-sluggable": "^10.0",
         "guzzlehttp/guzzle": "^7.2",
         "hardevine/shoppingcart": "^3.2",
@@ -22,6 +23,7 @@
         "nicolaslopezj/searchable": "^1.13",
         "omnipay/paypal": "^3.0",
         "predis/predis": "^2.1",
+        "pusher/pusher-php-server": "^7.2",
         "realrashid/sweet-alert": "^7.0"
     },
     "require-dev": {

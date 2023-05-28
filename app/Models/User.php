@@ -66,6 +66,11 @@ class User extends Authenticatable implements MustVerifyEmail
         ]
     ];
 
+    public function receivesBroadcastNotificationsOn(): string
+    {
+        return 'App.Models.User.' . $this->id;
+    }
+
     public function getFullNameAttribute(): string
     {
         return ucfirst($this->first_name) . ' ' . ucfirst($this->last_name);
