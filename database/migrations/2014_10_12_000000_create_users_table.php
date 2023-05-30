@@ -23,6 +23,7 @@ return new class extends Migration
             $table->unsignedTinyInteger('status')->default(0);
             $table->string('password');
             $table->rememberToken();
+            $table->boolean('receive_emails')->default(true);
             $table->timestamps();
         });
     }

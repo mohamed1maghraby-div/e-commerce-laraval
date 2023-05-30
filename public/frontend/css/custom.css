@@ -10,3 +10,10 @@
 .withoutAfter::after{
     display: none !important;
 }
+
+.notification-dropdown{
+    left: -19rem !important;
+}
+.notification-dropdown::before{
+    left: 19.50rem !important;
+}
