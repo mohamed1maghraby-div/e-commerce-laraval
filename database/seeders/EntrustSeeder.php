@@ -5,10 +5,8 @@ namespace Database\Seeders;
 use App\Models\Permission;
 use App\Models\Role;
 use App\Models\User;
-use Faker\Factory;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class EntrustSeeder extends Seeder
 {
@@ -17,7 +15,6 @@ class EntrustSeeder extends Seeder
      */
     public function run(): void
     {
-        $faker = Factory::create();
         $adminRoule = Role::create(['name' => 'admin', 'display_name' => 'Administration', 'description' => 'Administrator','allowed_route' => 'admin']);
         $supervisorRoule = Role::create(['name' => 'supervisor', 'display_name' => 'Supervisor', 'description' => 'Supervisor','allowed_route' => 'admin']);
         $customerRoule = Role::create(['name' => 'customer', 'display_name' => 'Customer', 'description' => 'Customer','allowed_route' => null]);
@@ -61,21 +58,13 @@ class EntrustSeeder extends Seeder
         ]);
         $customer->attachRole($customerRoule);
 
-        for($i=1; $i<=20; $i++){
-            $randomcustomer = User::create([
-                'first_name' => $faker->firstName,
-                'last_name' => $faker->lastName,
-                'username' => $faker->userName,
-                'email' => $faker->unique()->safeEmail,
-                'email_verified_at' => now(),
-                'mobile' => '96650'. $faker->numberBetween(1000000, 9999999),
-                'password' => bcrypt('123456789'),
-                'status' => 1,
-                'remember_token' => Str::random(10),
-            ]);
-            $randomcustomer->attachRole($customerRoule);
-            
-        }
+
+        /*
+        * Create 1000 fake users with their addresses.
+        */
+        User::factory()->count(1000)->hasAddresses(1)->create(); 
+
+
 
 
         $manageMain =  Permission::create([ 'name' => 'main', 'display_name' => 'Main', 'description' => 'index', 'route' => 'index', 'module' => 'index', 'as' => 'index', 'icon' => 'fas fa-home', 'parent' => '0', 'parent_original' => '0', 'sidebar_link' => '1', 'appear' => '1', 'ordering' => '1']);
