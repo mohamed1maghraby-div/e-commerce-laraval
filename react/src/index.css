@@ -2,3 +2,7 @@
 *{
   font-family: 'Open Sans', sans-serif
 }
+
+.border{
+  border: 2px solid red !important;
+}
