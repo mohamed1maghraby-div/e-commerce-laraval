@@ -8,6 +8,7 @@ import {
     IconButton,
     ListItemIcon,
     ListItemText,
+    Stack,
     Typography,
     useMediaQuery,
     useTheme,
@@ -33,6 +34,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
+import Links from './Links';
 
 const Header3 = () => {
     const [anchorEl, setAnchorEl] = useState(null);
@@ -69,7 +71,7 @@ const Header3 = () => {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "space-between",
-                mt: 5
+                mt: 5,
             }}
         >
             <Box>
@@ -141,10 +143,22 @@ const Header3 = () => {
                     </MenuItem>
                 </Menu>
             </Box>
-            {useMediaQuery('(max-width:1000px)') && (
-              <IconButton onClick={toggleDrawer("top", true)}>
-                  <MenuIcon />
-              </IconButton>
+
+            {useMediaQuery("(min-width:1200px)") && (
+                <Stack gap={4} direction={"row"} alignItems={"center"}>
+                    <Links title={"Home"} />
+                    <Links title={"Mega Menu"} />
+                    <Links title={"Full Screen Menu"} />
+                    <Links title={"Pages"} />
+                    <Links title={"User Account"} />
+                    <Links title={"Vendor Account"} />
+                </Stack>
+            )}
+
+            {useMediaQuery("(max-width:1200px)") && (
+                <IconButton onClick={toggleDrawer("top", true)}>
+                    <MenuIcon />
+                </IconButton>
             )}
 
             <Drawer
@@ -154,8 +168,7 @@ const Header3 = () => {
                 sx={{
                     ".MuiPaper-root.css-1sozasi-MuiPaper-root-MuiDrawer-paper":
                         { height: "100%" },
-                }}
-            >
+                }}>
                 <Box
                     sx={{
                         width: 444,
@@ -163,12 +176,19 @@ const Header3 = () => {
                         mt: 6,
                         position: "relative",
                         pt: 10,
-                    }}
-                >
+                    }}>
                     <IconButton
-                        sx={{ ":hover": {color: "red",rotate: "180deg", transition: "0.3s"}, position: "absolute", top: 0, right: 10 }}
-                        onClick={toggleDrawer("top", false)}
-                    >
+                        sx={{
+                            ":hover": {
+                                color: "red",
+                                rotate: "180deg",
+                                transition: "0.3s",
+                            },
+                            position: "absolute",
+                            top: 0,
+                            right: 10,
+                        }}
+                        onClick={toggleDrawer("top", false)}>
                         <Close />
                     </IconButton>
 
@@ -184,13 +204,11 @@ const Header3 = () => {
                             <Accordion
                                 key={item.mainLink}
                                 elevation={0}
-                                sx={{ bgcolor: "initial" }}
-                            >
+                                sx={{ bgcolor: "initial" }}>
                                 <AccordionSummary
                                     expandIcon={<ExpandMoreIcon />}
                                     aria-controls="panel1a-content"
-                                    id="panel1a-header"
-                                >
+                                    id="panel1a-header">
                                     <Typography>{item.mainLink}</Typography>
                                 </AccordionSummary>
                                 <List sx={{ py: 0, my: 0 }}>
@@ -198,10 +216,11 @@ const Header3 = () => {
                                         return (
                                             <ListItem
                                                 key={link}
-                                                sx={{ py: 0, my: 0 }}
-                                            >
+                                                sx={{ py: 0, my: 0 }}>
                                                 <ListItemButton>
-                                                    <ListItemText primary={link} />
+                                                    <ListItemText
+                                                        primary={link}
+                                                    />
                                                 </ListItemButton>
                                             </ListItem>
                                         );
