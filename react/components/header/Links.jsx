@@ -8,8 +8,7 @@ import ListItemText from "@mui/material/ListItemText";
 // eslint-disable-next-line react/prop-types
 const Links = ({title}) => {
     return (
-        <Box 
-        //className="border" 
+        <Box  
         sx={{
             ":hover .show-when-hover": {display: "block"},
             ":hover": {cursor: "pointer"},
@@ -26,7 +25,8 @@ const Links = ({title}) => {
                     minWidth: "170px",
                     left: "50%",
                     transform: "translateX(-50%)",
-                    display: "none"
+                    display: "none",
+                    zIndex: 2
                     }}>
                 <Paper sx={{ mt: 2 }} >
                     <nav aria-label="secondary mailbox folders">
