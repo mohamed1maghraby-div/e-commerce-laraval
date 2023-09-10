@@ -26,7 +26,7 @@ const Main = () => {
 
     const theme = useTheme();
     return (
-        <Container sx={{ mt: 9 }}>
+        <Container sx={{ py: 9 }}>
             <Stack
                 direction={"row"}
                 alignItems={"center"}
