@@ -33,4 +33,5 @@
 }
 html {
   scrollbar-color: #9e4673 #3d7a59;
+  scroll-behavior: smooth;
 }
