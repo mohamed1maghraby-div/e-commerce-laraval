@@ -3,6 +3,8 @@ import {
     Button,
     CardActions,
     Container,
+    Dialog,
+    IconButton,
     Rating,
     Stack,
     Typography,
@@ -15,7 +17,8 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import { CardActionArea } from "@mui/material";
-import { AddShoppingCartOutlined } from "@mui/icons-material";
+import { AddShoppingCartOutlined, Close } from "@mui/icons-material";
+import ProductDetails from "./ProductDetails";
 
 const Main = () => {
     const [alignment, setAlignment] = useState("left");
@@ -25,6 +28,17 @@ const Main = () => {
     };
 
     const theme = useTheme();
+
+    const [open, setOpen] = useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
     return (
         <Container sx={{ py: 9 }}>
             <Stack
@@ -87,14 +101,25 @@ const Main = () => {
                 <Stack></Stack>
             </Stack>
 
-            <Stack direction={"row"} flexWrap={"wrap"} justifyContent={"space-between"}>
+            <Stack
+                direction={"row"}
+                flexWrap={"wrap"}
+                justifyContent={"space-between"}
+            >
                 {["aaa", "bbb"].map((item) => {
                     return (
-                        <Card key={item} sx={{ maxWidth: 333, mt: 6, ":hover .MuiCardMedia-root": {
-                          rotate: "1deg",
-                          scale: "1.1",
-                          transition: "0.35s"
-                          } }}>
+                        <Card
+                            key={item}
+                            sx={{
+                                maxWidth: 333,
+                                mt: 6,
+                                ":hover .MuiCardMedia-root": {
+                                    rotate: "1deg",
+                                    scale: "1.1",
+                                    transition: "0.35s",
+                                },
+                            }}
+                        >
                             <CardActionArea>
                                 <CardMedia
                                     component="img"
@@ -136,6 +161,7 @@ const Main = () => {
                                     sx={{ justifyContent: "space-between" }}
                                 >
                                     <Button
+                                        onClick={handleClickOpen}
                                         sx={{ textTransform: "capitalize" }}
                                         size="large"
                                     >
@@ -157,6 +183,32 @@ const Main = () => {
                     );
                 })}
             </Stack>
+
+            <Dialog
+                sx={{ ".MuiPaper-root": { minWidth: { xs: "100%", md: 800 } } }}
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <IconButton
+                    sx={{
+                        ":hover": {
+                            color: "red",
+                            rotate: "180deg",
+                            transition: "0.3s",
+                        },
+                        position: "absolute",
+                        top: 0,
+                        right: 10,
+                    }}
+                    onClick={handleClose}
+                >
+                    <Close />
+                </IconButton>
+
+                <ProductDetails />
+            </Dialog>
         </Container>
     );
 };
