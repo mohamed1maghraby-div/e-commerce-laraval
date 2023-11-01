@@ -9,6 +9,19 @@ use App\Models\Product;
 
 class FrontendController extends Controller
 {
+    public function indexApi()
+    {
+        $product_categories = ProductCategory::whereStatus(1)->whereNull('parent_id')->get();
+        $featured_products = Product::with('firstMedia','category')->withAvg('reviews', 'rating')
+        ->inRandomOrder()
+        ->Featured()
+        ->active()
+        ->HasQuantity()
+        ->ActiveCategory()
+        ->take(8)
+        ->get();
+        return response()->json($featured_products);
+    }
     public function index()
     {
         $product_categories = ProductCategory::whereStatus(1)->whereNull('parent_id')->get();
