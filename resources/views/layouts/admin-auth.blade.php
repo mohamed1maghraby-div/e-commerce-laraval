@@ -35,7 +35,7 @@
         </div>
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
 <!-- Core plugin JavaScript-->
 <script src="{{ asset('backend/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 

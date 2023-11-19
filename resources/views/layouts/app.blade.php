@@ -55,7 +55,7 @@
     
     <livewire:scripts />
     <x-livewire-alert::scripts />
-    @vite(['resources/js/app.js'])
+    {{-- @vite(['resources/js/app.js']) --}}
     {{-- alpinejs --}}
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.1/dist/cdn.min.js"></script>
     <script src="{{ asset('backend/vendor/jquery/jquery.min.js') }}"></script>
