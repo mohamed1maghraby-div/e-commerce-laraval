@@ -91,7 +91,8 @@ services:
         ports:
             - 5173:5173
         volumes:
-            - ./react:/react
+            - ./react:/usr/src/react
+            - ./react/node_modules:/usr/src/react/node_modules
         tty: true
         depends_on:
             - php

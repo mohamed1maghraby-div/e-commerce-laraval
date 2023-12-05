@@ -25,6 +25,7 @@ class FrontendController extends Controller
     public function index()
     {
         $product_categories = ProductCategory::whereStatus(1)->whereNull('parent_id')->get();
+        dd($product_categories);
         $featured_products = Product::with('firstMedia')
         ->inRandomOrder()
         ->Featured()
