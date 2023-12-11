@@ -79,21 +79,21 @@ body {
   height: 130px;
   width: 130px;
 }
-.categoty-card {
+.category-card {
   height: 140px;
   width: 100%;
   border-radius: 50%;
   opacity: 0.3;
 }
 
-.categoty-card-img {
+.category-card-img {
   max-width: 110px;
   max-height: 100px;
   position: absolute;
   top: 20%;
   left: 10%;
 }
-.categoty-card-text {
+.category-card-text {
   color: #555550;
   font-family: Almarai;
   font-size: 18px;
