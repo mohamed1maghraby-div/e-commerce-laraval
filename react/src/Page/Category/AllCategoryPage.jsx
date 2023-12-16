@@ -1,7 +1,7 @@
 import CategoryContainer from '../../Components/Category/CategoryContainer'
 import Pagination from '../../Components/Utility/Pagination'
 
-const AllCategory = () => {
+const AllCategoryPage = () => {
   return (
     <div style={{ minHeight: '670px' }}>
         <CategoryContainer />
@@ -10,4 +10,4 @@ const AllCategory = () => {
   )
 }
 
-export default AllCategory
+export default AllCategoryPage

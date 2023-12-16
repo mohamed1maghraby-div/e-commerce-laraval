@@ -1,16 +1,27 @@
 import { Container, Row } from 'react-bootstrap'
-import SubTitle from '../Utility/SubTitle'
 import BrandCard from './BrandCard'
 import brand1 from '../../Assets/images/brand1.png';
 import brand2 from '../../Assets/images/brand2.png';
 import brand3 from '../../Assets/images/brand3.png';
 
-// eslint-disable-next-line react/prop-types
-const BrandFeatured = ({title, btntitle}) => {
+
+const BrandContainer = () => {
   return (
     <Container>
-        <SubTitle title={title} btntitle={btntitle} pathText="/allbrand"/>
+        <div className='admin-content-text mt-2'>كل الماركات</div>
         <Row className='my-1 d-flex justify-content-between'>
+            <BrandCard img={brand1} />
+            <BrandCard img={brand2} />
+            <BrandCard img={brand3} />
+            <BrandCard img={brand1} />
+            <BrandCard img={brand2} />
+            <BrandCard img={brand3} />
+            <BrandCard img={brand1} />
+            <BrandCard img={brand2} />
+            <BrandCard img={brand3} />
+            <BrandCard img={brand1} />
+            <BrandCard img={brand2} />
+            <BrandCard img={brand3} />
             <BrandCard img={brand1} />
             <BrandCard img={brand2} />
             <BrandCard img={brand3} />
@@ -22,4 +33,4 @@ const BrandFeatured = ({title, btntitle}) => {
   )
 }
 
-export default BrandFeatured
+export default BrandContainer
