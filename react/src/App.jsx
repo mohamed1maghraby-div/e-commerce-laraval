@@ -6,6 +6,7 @@ import LoginPage from "./Page/Auth/LoginPage";
 import RegisterPage from "./Page/Auth/RegisterPage";
 import AllBrandPage from "./Page/Brand/AllBrandPage";
 import AllCategoryPage from "./Page/Category/AllCategoryPage";
+import ShopProductsPage from "./Page/Products/ShopProductsPage";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/register" element={<RegisterPage />}/>
           <Route path="/allcategory" element={<AllCategoryPage />}/>
           <Route path="/AllBrand" element={<AllBrandPage />}/>
+          <Route path="/products" element={<ShopProductsPage />}/>
         </Routes>
       </BrowserRouter>
       <Footer />
