@@ -3,6 +3,7 @@ import { Container } from 'react-bootstrap'
 import CategoryHeader from '../../Components/Category/CategoryHeader'
 import ProductDetalis from '../../Components/Products/ProductDetalis'
 import RateContainer from '../../Components/Rate/RateContainer'
+import CardProductsContainer from './../../Components/Products/CardProductsContainer';
 
 const ProductDetalisPage = () => {
   return (
@@ -11,6 +12,7 @@ const ProductDetalisPage = () => {
         <Container>
             <ProductDetalis />
             <RateContainer />
+            <CardProductsContainer title='منتجات قد تعجبك'/>
         </Container>
     </div>
   )
