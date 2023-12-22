@@ -8,6 +8,8 @@ import AllBrandPage from "./Page/Brand/AllBrandPage";
 import AllCategoryPage from "./Page/Category/AllCategoryPage";
 import ShopProductsPage from "./Page/Products/ShopProductsPage";
 import ProductDetalisPage from "./Page/Products/ProductDetalisPage";
+import CartPage from "./Page/Cart/CartPage";
+import ChoosePayMethodPage from "./Page/Checkout/ChoosePayMethodPage";
 
 
 function App() {
@@ -24,6 +26,8 @@ function App() {
           <Route path="/AllBrand" element={<AllBrandPage />}/>
           <Route path="/products" element={<ShopProductsPage />}/>
           <Route path="/products/:id" element={<ProductDetalisPage />}/>
+          <Route path="/cart" element={<CartPage />}/>
+          <Route path="/order/paymethod" element={<ChoosePayMethodPage />}/>
         </Routes>
       </BrowserRouter>
       <Footer />
