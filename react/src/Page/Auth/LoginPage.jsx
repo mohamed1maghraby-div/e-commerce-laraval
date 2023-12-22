@@ -28,6 +28,15 @@ const LoginPage = () => {
               </Link>
             </label>
           </Col>
+
+          <label className="mx-auto my-4">
+              <Link to="/admin/allproducts" style={{ textDecoration: 'none' }}>
+              <span style={{ cursor: "pointer" }} className="text-danger">
+                الدخول ادمن
+              </span>
+              </Link>
+            </label>
+
         </Row>
       </Container>
     </div>
