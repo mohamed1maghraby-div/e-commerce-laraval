@@ -25,12 +25,16 @@ const AdminSideBar = () => {
             اضف تصنيف
           </div>
         </Link>
-        <div className="admin-side-text mt-1 border-bottom p-2 mx-auto text-center">
-          اضف تصنيف فرعى
-        </div>
-        <div className="admin-side-text mt-1 border-bottom p-2 mx-auto text-center">
-          اضف منتج
-        </div>
+        <Link to="/admin/addsubcategory" style={{ textDecoration: 'none' }}>
+          <div className="admin-side-text mt-1 border-bottom p-2 mx-auto text-center">
+            اضف تصنيف فرعى
+          </div>
+        </Link>
+        <Link to="/admin/addproduct" style={{ textDecoration: 'none' }}>
+          <div className="admin-side-text mt-1 border-bottom p-2 mx-auto text-center">
+            اضف منتج
+          </div>
+        </Link>
       </div>
     </div>
   )
