@@ -13,6 +13,7 @@ import ChoosePayMethodPage from "./Page/Checkout/ChoosePayMethodPage";
 import AdminAllProductPage from "./Page/Admin/AdminAllProductPage";
 import AdminAllOrdersPage from "./Page/Admin/AdminAllOrdersPage";
 import AdminOrdersDetaliPage from "./Page/Admin/AdminOrdersDetalisPage";
+import AdminAddBrandPage from "./Page/Admin/AdminAddBrandPage";
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
           <Route path="/admin/allproducts" element={<AdminAllProductPage />}/>
           <Route path="/admin/allorders" element={<AdminAllOrdersPage />}/>
           <Route path="/admin/orders/:id" element={<AdminOrdersDetaliPage />}/>
+          <Route path="/admin/addbrand" element={<AdminAddBrandPage />}/>
         </Routes>
       </BrowserRouter>
       <Footer />
