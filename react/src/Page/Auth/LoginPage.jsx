@@ -35,6 +35,11 @@ const LoginPage = () => {
                 الدخول ادمن
               </span>
               </Link>
+              <Link to="/user/allorders" style={{ textDecoration: 'none' }}>
+              <span style={{ cursor: "pointer" }} className="text-danger mx-3">
+                الدخول مستخدم
+              </span>
+              </Link>
             </label>
 
         </Row>
