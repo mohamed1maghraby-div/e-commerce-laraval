@@ -19,6 +19,9 @@ import AdminAddSubCategoryPage from "./Page/Admin/AdminAddSubCategoryPage";
 import AdminAddProductPage from "./Page/Admin/AdminAddProductPage";
 import UserAllOrdersPage from "./Page/User/UserAllOrdersPage";
 import UserFavoriteProductsPage from "./Page/User/UserFavoriteProductsPage";
+import UserAddressePage from "./Page/User/Addresse/UserAddressePage";
+import UserAddAddressePage from "./Page/User/Addresse/UserAddAddressePage";
+import UserEditAddressePage from "./Page/User/Addresse/UserEditAddressePage";
 
 
 function App() {
@@ -50,6 +53,9 @@ function App() {
           {/* user */}
           <Route path="/user/allorders" element={<UserAllOrdersPage />}/>
           <Route path="/user/favoriteproducts" element={<UserFavoriteProductsPage />}/>
+          <Route path="/user/addresses" element={<UserAddressePage />}/>
+          <Route path="/user/add-address" element={<UserAddAddressePage />}/>
+          <Route path="/user/edit-address" element={<UserEditAddressePage />}/>
         </Routes>
       </BrowserRouter>
       <Footer />

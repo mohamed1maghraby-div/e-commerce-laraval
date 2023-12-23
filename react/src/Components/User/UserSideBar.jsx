@@ -15,7 +15,7 @@ const UserSideBar = () => {
             المنتجات المفضلة
           </div>
         </Link>
-        <Link to="/admin/addbrand" style={{ textDecoration: 'none' }}>
+        <Link to="/user/addresses" style={{ textDecoration: 'none' }}>
           <div className="admin-side-text mt-1 border-bottom p-2 mx-auto text-center">
             العناوين الشخصية
           </div>
