@@ -20,7 +20,7 @@ const UserSideBar = () => {
             العناوين الشخصية
           </div>
         </Link>
-        <Link to="/admin/addcategory" style={{ textDecoration: 'none' }}>
+        <Link to="/user/profile" style={{ textDecoration: 'none' }}>
           <div className="admin-side-text mt-1 border-bottom p-2 mx-auto text-center">
             الملف الشخصى
           </div>
