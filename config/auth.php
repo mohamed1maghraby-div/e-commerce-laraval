@@ -66,6 +66,12 @@ return [
             'table' => 'users',
         ],
 
+        'api' => [
+            'driver' => 'jwt',
+            'model' => App\Models\User::class,
+            'table' => 'users',
+        ],
+
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',

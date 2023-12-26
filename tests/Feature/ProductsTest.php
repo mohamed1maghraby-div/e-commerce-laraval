@@ -11,6 +11,7 @@ use Database\Seeders\TagSeeder;
 use Database\Seeders\WorldSeeder;
 use Database\Seeders\EntrustSeeder;
 use Database\Seeders\ProductSeeder;
+use Database\Seeders\DatabaseSeeder;
 use Illuminate\Support\Facades\Schema;
 use Database\Seeders\UserAddressSeeder;
 use Database\Seeders\WorldStatusSeeder;
@@ -33,7 +34,7 @@ class ProductsTest extends TestCase
 
     public function test_product_conatains_non_empty_table(): void
     {
-        $this->seed([
+        /* $this->seed([
             EntrustSeeder::class,
             ProductCategorySeeder::class,
             TagSeeder::class,
@@ -42,7 +43,9 @@ class ProductsTest extends TestCase
             ProductsImagesSeeder::class,
             ProductCouponSeeder::class,
             ProductReviewSeeder::class
-        ]);
+        ]); */
+
+        $this->seed([DatabaseSeeder::class]);
 
 
         $user = $this->getUser();

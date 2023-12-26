@@ -14,8 +14,8 @@ use App\Http\Controllers\Frontend\FrontendController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//middleware('auth:sanctum')
+Route::middleware(['api', 'apiCheckPassword'])->get('/user', function (Request $request) {
     return $request->user();
 });
 
