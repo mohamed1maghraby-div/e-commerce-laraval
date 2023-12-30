@@ -19,4 +19,4 @@ Route::middleware(['api', 'apiCheckPassword'])->get('/user', function (Request $
     return $request->user();
 });
 
-Route::get('/', [FrontendController::class, 'indexApi'])->name('frontend.index');
+Route::get('/categories', [FrontendController::class, 'indexApi'])->name('frontend.index');
