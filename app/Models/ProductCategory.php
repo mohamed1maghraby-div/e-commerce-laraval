@@ -28,6 +28,11 @@ class ProductCategory extends Model
         ],
     ];
 
+    public function getCoverAttribute($value)
+    {
+        return '/assets/product_categories/' . $value;
+    }
+
     public function status()
     {
         return $this->status ? 'Active' : 'Inactive';

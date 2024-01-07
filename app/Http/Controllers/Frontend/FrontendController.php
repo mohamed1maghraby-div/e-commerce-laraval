@@ -6,26 +6,13 @@ use Illuminate\Http\Request;
 use App\Models\ProductCategory;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Traits\GeneralTrait;
 
 class FrontendController extends Controller
 {
-    public function indexApi()
-    {
-        $product_categories = ProductCategory::whereStatus(1)->whereNull('parent_id')->get();
-        $featured_products = Product::with('firstMedia','category')->withAvg('reviews', 'rating')
-        ->inRandomOrder()
-        ->Featured()
-        ->active()
-        ->HasQuantity()
-        ->ActiveCategory()
-        ->take(8)
-        ->get();
-        return response()->json($featured_products);
-    }
     public function index()
     {
         $product_categories = ProductCategory::whereStatus(1)->whereNull('parent_id')->get();
-        dd($product_categories);
         $featured_products = Product::with('firstMedia')
         ->inRandomOrder()
         ->Featured()

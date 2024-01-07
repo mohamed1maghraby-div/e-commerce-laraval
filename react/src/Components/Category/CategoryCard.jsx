@@ -11,7 +11,7 @@ const CategoryCard = ({img, title, background}) => {
     <div className='allCard mb-3'>
         <div className='category-card' style={{ backgroundColor: `${background}` }}></div>{""}
         <img alt='zcv' src={img} className='category-card-img' />
-        <p className='category-card-text my-2'>تخفيضات</p>
+        <p className='category-card-text my-2'>{title}</p>
     </div>
     </Col>
   )

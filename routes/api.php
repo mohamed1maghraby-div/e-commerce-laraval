@@ -3,6 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Controllers\API\Frontend\ProductCategoryController;
+use App\Http\Controllers\API\Backend\ProductCategoryController as BackendProductCategoryController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,5 +21,7 @@ use App\Http\Controllers\Frontend\FrontendController;
 Route::middleware(['api', 'apiCheckPassword'])->get('/user', function (Request $request) {
     return $request->user();
 });
-
-Route::get('/categories', [FrontendController::class, 'indexApi'])->name('frontend.index');
+Route::group(['middleware' => ['api', 'apiCheckPassword']], function(){
+});
+Route::get('/categories', [ProductCategoryController::class, 'index'])->name('frontend.index');
+Route::resource('product_categories', BackendProductCategoryController::class);

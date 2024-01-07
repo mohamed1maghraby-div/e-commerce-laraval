@@ -21,7 +21,7 @@ trait GeneralTrait
     public function returnSuccessMessage($msg="", $errNum="S000")
     {
         return [
-            'status' => true,
+            'status' => 201,
             'errNum' => $errNum,
             'msg' => $msg
         ];
