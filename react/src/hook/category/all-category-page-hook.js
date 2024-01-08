@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { getAllCategory } from '../../redux/actions/CategoryAction';
-import { getAllCategoryPage } from '../../redux/actions/CategoryAction';
+import { getAllCategory, getAllCategoryPage } from '../../redux/actions/CategoryAction';
 
 const AllCategoryPageHook = () => {
   

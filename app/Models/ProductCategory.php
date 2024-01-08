@@ -30,7 +30,7 @@ class ProductCategory extends Model
 
     public function getCoverAttribute($value)
     {
-        return '/assets/product_categories/' . $value;
+        return config('app.url') . '/assets/product_categories/' . $value;
     }
 
     public function status()
