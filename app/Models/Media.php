@@ -16,4 +16,8 @@ class Media extends Model
     {
         return $this->morphTo();
     }
+    public function getFileNameAttribute($value)
+    {
+        return config('app.url') . '/assets/products/' . $value;
+    }
 }

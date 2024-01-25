@@ -166,4 +166,10 @@ class ProductCategoryController extends Controller
         }
         return true;
     }
+
+    public function getSubCategoriesOfMainCategory($id)
+    {
+        $subCategories = ProductCategory::whereParentId($id)->get(['id', 'name']);
+        return response()->json($subCategories);
+    }
 }

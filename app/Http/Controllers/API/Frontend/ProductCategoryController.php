@@ -12,7 +12,7 @@ class ProductCategoryController extends Controller
     use GeneralTrait;
     public function index()
     {
-        $product_categories = ProductCategory::whereStatus(1)->orderBy('created_at', 'DESC')->paginate(10);
+        $product_categories = ProductCategory::whereStatus(1)->paginate(10);
         return response()->json($product_categories);
     }
 }
