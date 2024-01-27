@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
-import { getAllProducts } from "../../redux/actions/ProductsAction";
+import { getAllProducts, getAllProductsPage } from "../../redux/actions/ProductsAction";
 
 
 const ViewSearchProductsHook = () => {
@@ -8,22 +8,29 @@ const ViewSearchProductsHook = () => {
     const dispatch = useDispatch();
 
     useEffect(()=>{
-        dispatch(getAllProducts())
+        dispatch(getAllProducts(10))
     }, [])
 
     const allProducts = useSelector((state) => state.allproducts.allProducts)
     
-    if(allProducts.data){
-        console.log(allProducts.data)
-    }
-
     let items= [];
     if(allProducts.data)
         items=allProducts.data;
     else
         items=[]
 
-    return [items]
+    const onPress = async (page) =>{
+        await dispatch(getAllProductsPage(page))
+    }
+
+    if(items){
+        var pageCount = allProducts.last_page
+    }
+    else{
+        pageCount = 0;
+    }
+
+    return [items, onPress, pageCount]
 }
 
 export default ViewSearchProductsHook

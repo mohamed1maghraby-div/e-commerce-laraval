@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
-import { getAllProducts } from "../../redux/actions/ProductsAction";
+import { getAllProducts, getAllProductsPage } from "../../redux/actions/ProductsAction";
 
 
 const ViewProductAdminHook = () => {
@@ -11,19 +11,24 @@ const ViewProductAdminHook = () => {
         dispatch(getAllProducts(10))
     }, [])
 
-    const allProducts = useSelector((state) => state.allproducts.allProducts)
-    
-    if(allProducts.data){
-        console.log(allProducts)
+    const onPress = async (page) =>{
+        await dispatch(getAllProductsPage(page))
     }
 
+    const allProducts = useSelector((state) => state.allproducts.allProducts)
+    
     let items= [];
     if(allProducts)
         items=allProducts;
     else
         items=[]
 
-    return [items]
+    if(items)
+        var pageCount = items.last_page
+    else
+        pageCount = 0;
+
+    return [items,onPress,pageCount]
 }
 
 export default ViewProductAdminHook

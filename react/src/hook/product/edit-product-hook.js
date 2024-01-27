@@ -1,19 +1,26 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getAllCategory } from './../../redux/actions/CategoryAction';
+import { getAllCategory } from '../../redux/actions/CategoryAction';
 import { getAllBrand } from '../../redux/actions/BrandAction';
-import { createProduct } from '../../redux/actions/ProductsAction'
+import { getProduct } from '../../redux/actions/ProductsAction'
 import { getOneCategory } from '../../redux/actions/SubCategoryAction'
-import notify from './../../hook/useNotification';
+import notify from '../useNotification';
 
-const AdminAddProductHook = () => {
+const AdminEditProductHook = (id) => {
 
-    
     const dispatch = useDispatch();
+
     useEffect(()=>{
-        dispatch(getAllCategory());
-        dispatch(getAllBrand());
+        const run= async ()=>{ // cause we can't use useEffect with async and await direct
+            await dispatch(getProduct(id))
+            await dispatch(getAllCategory());
+            await dispatch(getAllBrand());
+        }
+        run();
     }, [])
+
+    //get one product
+    const item = useSelector((state) => state.allproducts.oneProduct)
 
     //get last category state from redux
     const categories = useSelector(state => state.allCategory.category);
@@ -55,6 +62,16 @@ const AdminAddProductHook = () => {
     const [selectedSubID, setSelectedSubID] = useState([]);
     const [loading, setLoading] = useState(true);
 
+    useEffect(()=>{
+        if(item){
+            setProdName(item.name)
+            setProdDescription(item.description)
+            setPriceBefore(item.price)
+            setQty(item.quantity)
+            setCatID(item.category.id)
+            setBrandID()
+        }
+    }, [item])
     //to change name state
     const onChangeProdName = (event) => {
         event.persist();
@@ -142,42 +159,8 @@ const AdminAddProductHook = () => {
     const handelSubmit = async (e) => {
         e.preventDefault();
 
-        if(catID === 0 || prodName === '' || prodDescription === '' || images.length <= 0 || priceBefore <= 0)
-        {
-            notify("من فضلك أكمل البيانات.", "warn")
-            return;
-        }
-        /* 
-            convert base 64 image to file
-            const imgCover = dataURLtoFile(images[0], Math.random() + ".png")
-            convert array of base 64 images to file
-            const itemImages=Array.from(Array(Object.keys(images).length).keys()).map(
-                (item, index) =>{
-                    return dataURLtoFile(images[index], Math.random() + ".png")
-                }
-            )
-        */
-
-        const formData = new FormData();
-        formData.append("name", prodName);
-        formData.append("description", prodDescription);
-        formData.append("quantity", qty);
-        formData.append("price", priceBefore);
-        formData.append("images[]", images[0]); //images[0]
-        formData.append("product_category_id", catID);
-        formData.append("brand", brandID);
-        formData.append("status", 1);
-        formData.append("featured", 1);
-
-        //to send colors
-        colors.map((color)=>formData.append("availableColors[]", color));
-        selectedSubID.map((item)=>formData.append("subcategories[]", item.id));
-
-        setLoading(true)
-        await dispatch(createProduct(formData));
-        setLoading(false)
     }
-
+console.log(item)
     //get create message
     const product = useSelector(state => state.allproducts.products);
 
@@ -206,10 +189,10 @@ const AdminAddProductHook = () => {
     }, [loading])
 
     
-    return [onChangeProdName, onChangeDescName, onChangePriceBefore, onChangePriceAfter, onChangeQty, onChangeColor,showColor,categories,brands,priceAfter,images,setImages,onRemove,options,
+    return [catID,onChangeProdName, onChangeDescName, onChangePriceBefore, onChangePriceAfter, onChangeQty, onChangeColor,showColor,categories,brands,priceAfter,images,setImages,onRemove,options,
     handleChangeComplete,removeColor,onSelectCategory,handelSubmit,onSelectBrand,colors,priceBefore,
     qty,prodDescription,prodName,onSelect];
 
 }
 
-export default AdminAddProductHook
+export default AdminEditProductHook

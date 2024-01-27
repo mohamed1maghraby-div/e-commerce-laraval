@@ -7,7 +7,7 @@ import ViewProductAdminHook from "../../hook/admin/view-product-admin-hook";
 
 const AdminAllProductPage = () => {
 
-  const [items] = ViewProductAdminHook()
+  const [items,onPress,pageCount] = ViewProductAdminHook()
 
   return (
     <Container>
@@ -17,7 +17,10 @@ const AdminAllProductPage = () => {
             </Col>
             <Col sm='9' xs='10' md='10'>
                 <AdminAllProducts products={items.data}/>
-                <Pagination />
+                {
+                  pageCount > 1 ? (<Pagination pageCount={pageCount} onPress={onPress}/>) : null
+                }
+                
             </Col>
         </Row>
     </Container>

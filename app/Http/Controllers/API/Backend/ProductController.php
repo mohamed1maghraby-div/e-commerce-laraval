@@ -130,7 +130,7 @@ class ProductController extends Controller
         /* if(!auth()->user()->ability('admin', 'display_products')){
             return redirect()->route('admin.index');
         } */
-        $product = Product::with('tags', 'media')->withAggregate('category','name')->withAvg('reviews', 'rating')->find($id);
+        $product = Product::with('tags', 'media', 'category')->withAggregate('category','name')->withAvg('reviews', 'rating')->find($id);
         return response()->json($product);
 
         //return view('backend.product_categories.show');
