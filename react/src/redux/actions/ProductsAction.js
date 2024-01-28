@@ -57,6 +57,24 @@ export const getAllProductsPage = (page,limit) => async (dispatch)=>{
         })
     }
 }
+
+//get all products with query string
+export const getAllProductsSearch = (queryString) => async (dispatch)=>{
+    try{
+        const response = await useGetData(`/api/v1/products?${queryString}`);
+        dispatch({
+            type : GET_ALL_PRODUCTS,
+            payload : response,
+            loading:true
+        })
+    }catch(e){
+        dispatch({
+            type : GET_ERROR,
+            payload : "Error "+ e
+        })
+    }
+}
+
 //get one product with id
 export const getProduct = (id) => async (dispatch)=>{
     try{
