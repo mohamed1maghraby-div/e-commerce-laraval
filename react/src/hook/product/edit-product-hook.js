@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllCategory } from '../../redux/actions/CategoryAction';
 import { getAllBrand } from '../../redux/actions/BrandAction';
-import { getProduct } from '../../redux/actions/ProductsAction'
+import { getProduct, updateProduct } from '../../redux/actions/ProductsAction'
 import { getOneCategory } from '../../redux/actions/SubCategoryAction'
 import notify from '../useNotification';
 
@@ -70,6 +70,7 @@ const AdminEditProductHook = (id) => {
             setQty(item.quantity)
             setCatID(item.category.id)
             setBrandID()
+            setImages(item.media)
         }
     }, [item])
     //to change name state
@@ -120,18 +121,22 @@ const AdminEditProductHook = (id) => {
     
     //when select category store id
     const onSelectCategory= async (e)=>{
-        if(e.target.value != 0){
-            await dispatch(getOneCategory(e.target.value))
-        }
         setCatID(e.target.value)
-
     }
 
     useEffect(()=>{
         if(catID != 0){
-            if(subCat){
-                setOptions(subCat)
+            const run = async ()=>{
+                await dispatch(getOneCategory(catID))
             }
+
+            run()
+        }
+    }, [catID])
+
+    useEffect(()=>{
+        if(subCat){
+            setOptions(subCat)
         }
     }, [catID])
 
@@ -141,7 +146,7 @@ const AdminEditProductHook = (id) => {
     }
 
     //to convert base 64 to file
-    /* function dataURLtoFile(dataurl, filename){
+    function dataURLtoFile(dataurl, filename){
         var arr = dataurl.splite(','),
             mime = arr[0].match(/:(.*?);/)[1],
             bstr = atob(arr[1]),
@@ -153,11 +158,74 @@ const AdminEditProductHook = (id) => {
         }
 
         return new File([u8arr], filename, {type:mime});
-    } */
+    }
+
+    const convertURLtoFile = async (url) => {
+        const response = await fetch(url, {mode: "cors"});
+        const data = await response.blob();
+        const ext = url.split(".").pop();
+        const filename = url.split("/").pop();
+        const metadata = {type : `image/${ext}`};
+        return new File([data], Math.random(), metadata);
+    }
 
     //to save data
     const handelSubmit = async (e) => {
         e.preventDefault();
+
+        if(catID === 0 || prodName === '' || prodDescription === '' || images.length <= 0 || priceBefore <= 0)
+        {
+            notify("من فضلك أكمل البيانات.", "warn")
+            return;
+        }
+        /* 
+            convert base 64 image to file
+            const imgCover = dataURLtoFile(images[0], Math.random() + ".png")
+            convert array of base 64 images to file
+            
+        */
+
+            let imgCover;
+        if(images[0].length <= 1000){
+            //convert url to base64
+            convertURLtoFile(images[0]).then(val => imgCover = val);
+        }else{
+            imgCover = dataURLtoFile(images[0], Math.random() + ".png")
+        }
+
+        let itemImages=[];
+        Array.from(Array(Object.keys(images).length).keys()).map(
+            (item, index) =>{
+                if(images[index].length <= 1000){
+                    convertURLtoFile(images[index]).then(val => itemImages.push(val));
+                }else{
+                    return dataURLtoFile(images[index], Math.random() + ".png")
+                }
+            }
+        )
+
+        const formData = new FormData();
+        formData.append("name", prodName);
+        formData.append("description", prodDescription);
+        formData.append("quantity", qty);
+        formData.append("price", priceBefore);
+        setTimeout(() => {
+            formData.append("images[]", images[0]); //images[0]
+        }, 1000)
+        formData.append("product_category_id", catID);
+        formData.append("brand", brandID);
+        formData.append("status", 1);
+        formData.append("featured", 1);
+
+        //to send colors
+        colors.map((color)=>formData.append("availableColors[]", color));
+        selectedSubID.map((item)=>formData.append("subcategories[]", item.id));
+
+        setTimeout( async () => {
+            setLoading(true)
+            await dispatch(updateProduct(id, formData));
+            setLoading(false)
+        }, 1000)
 
     }
 console.log(item)

@@ -173,7 +173,7 @@ class ProductController extends Controller
 
         if($request->images && count($request->images)){
             $i = $product->media()->count() + 1;
-            foreach($request->images as $image){
+            /* foreach($request->images as $image){
                 $file_name = $product->slug . '_' . time() . '_' . $i . '.' . $image->getClientOriginalExtension();
                 $file_size = $image->getSize();
                 $file_type = $image->getMimeType();
@@ -191,13 +191,11 @@ class ProductController extends Controller
                 ]);
 
                 $i++;
-            }
+            } */
         }
 
-        return redirect()->route('admin.products.index')->with([
-           'message' => 'Updated successfully',
-            'alert-type' =>'success',
-        ]);
+        return $this->returnSuccessMessage('Created successfully', 201);
+
     }
 
     /**
