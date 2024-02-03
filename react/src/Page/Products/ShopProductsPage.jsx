@@ -9,7 +9,7 @@ import ViewSearchProductsHook from "../../hook/product/view-search-products-hook
 
 const ShopProductsPage = () => {
 
-  const [items, onPress, pageCount] = ViewSearchProductsHook();
+  const [items, onPress, pageCount, totalItems, getProducts] = ViewSearchProductsHook();
 
   if(items)
     console.log(items)
@@ -18,7 +18,7 @@ const ShopProductsPage = () => {
     <div style={{ minHeight: '670px' }}>
         <CategoryHeader />
         <Container>
-          <SearchCountResult title={`هناك ${items.length} نتيجة بحث.`} />
+          <SearchCountResult onClick={getProducts} title={`هناك ${totalItems} نتيجة بحث.`} />
           
           <Row className="d-flex flex-row">
             <Col sm='2' xs='2' md='1' className="d-flex">

@@ -2,9 +2,13 @@ import UnopDropdown from 'unop-react-dropdown'
 import sort from '../../Assets/images/sort.png'
 
 // eslint-disable-next-line react/prop-types
-const SearchCountResult = ({title}) => {
+const SearchCountResult = ({title, onClick}) => {
     const handler =()=>{
         
+    }
+    const clickMe =(key)=>{
+        localStorage.setItem("sortType", key)
+        onClick()
     }
   return (
     <div className='d-flex justify-content-between pt-3 px-2'>
@@ -29,12 +33,13 @@ const SearchCountResult = ({title}) => {
             align="CENTER"
             hover>
                 <div className='card-filter'>
-                    <div className='border-bottom card-filter-item'>الاكثر مبيعا</div>
-                    <div className='border-bottom card-filter-item'>الاعلى تقييما</div>
-                    <div className='border-bottom card-filter-item'>
+                    <div onClick={()=> clickMe("")} className='border-bottom card-filter-item'>بدون ترتيب</div>
+                    <div onClick={()=> clickMe("الاكثر مبيعا")} className='border-bottom card-filter-item'>الاكثر مبيعا</div>
+                    <div onClick={()=> clickMe("الاعلى تقييما")} className='border-bottom card-filter-item'>الاعلى تقييما</div>
+                    <div onClick={()=> clickMe("السعر من الاقل للأعلى")} className='border-bottom card-filter-item'>
                         السعر من الاقل للأعلى
                     </div>
-                    <div className='border-bottom card-filter-item'>السعر من الاعلى للأقل</div>
+                    <div onClick={()=> clickMe("السعر من الاعلى للأقل")} className='border-bottom card-filter-item'>السعر من الاعلى للأقل</div>
                 </div>
             </UnopDropdown>
         </div>
