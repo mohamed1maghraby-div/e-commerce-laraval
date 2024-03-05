@@ -18,13 +18,27 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         /* if(!auth()->user()->ability('admin', 'manage_products, show_products')){
             return redirect()->route('admin.index');
         } */
+        /* return response()->json($request->all()); */
+
+        
 
         $products = Product::with('category', 'tags', 'firstMedia')->withAvg('reviews', 'rating')
+        ->when(\request()->category != null, function($query){
+            $query->whereHas('category', function($query){
+                $query->whereIn('id',\request()->category);
+            });
+        })
+        ->when(\request()->priceFrom != null, function ($query){
+            $query->where('price', '>=', \request()->priceFrom);
+        })
+        ->when(\request()->priceTo != null, function ($query){
+            $query->where('price', '<=', \request()->priceTo);
+        })
         ->when(\request()->keyword != null, function ($query){
             $query->search(\request()->keyword);
         })

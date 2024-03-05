@@ -10,12 +10,19 @@ const NavbarSearchHook = () => {
     const onChangeSearch=(e)=>{
       localStorage.setItem("searchWord", e.target.value) // to don't lose search data when reload page
       setSearchKeyword(e.target.value)
+
+      const path = window.location.pathname;
+      if(path != "/products")
+      {
+        window.location.href="/products"
+      }
     }
 
     // to delay search resault for a while
     useEffect(()=>{
 
       setTimeout(()=>{
+
         getProducts();
       }, 1000);
 

@@ -14,6 +14,9 @@ const ShopProductsPage = () => {
   if(items)
     console.log(items)
   
+  if(getProducts)
+    console.log(getProducts)
+  
   return (
     <div style={{ minHeight: '670px' }}>
         <CategoryHeader />

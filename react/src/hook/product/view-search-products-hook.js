@@ -6,13 +6,20 @@ import { getAllProducts, getAllProductsPage, getAllProductsSearch } from "../../
 const ViewSearchProductsHook = () => {
     let limit = 6;
     const dispatch = useDispatch();
+    let word='', queryCat='', queryBrand='', priceTo='', priceFrom='';
 
     const getProducts = async () =>{
-        let word='';
-        if(localStorage.getItem("searchWord") != null)
-            word= localStorage.getItem("searchWord")
-            sortData()
-        await dispatch(getAllProductsSearch(`sort_by=${sort}&order_by=${sortBy}&limit=${limit}&keyword=${word}`))
+        getStorage()
+        await dispatch(getAllProductsSearch(`
+            sort_by=${sort}
+            &order_by=${sortBy}
+            &limit=${limit}
+            &keyword=${word}
+            &${queryCat}
+            &${queryBrand}
+            &priceFrom=${priceFrom}
+            &priceTo=${priceTo}
+        `))
     }
     useEffect(()=>{
         getProducts()
@@ -45,11 +52,35 @@ const ViewSearchProductsHook = () => {
 
     //when click pagination
     const onPress = async (page) =>{
-        let word='';
+        getStorage()
+        await dispatch(getAllProductsSearch(`
+            sort_by=${sort}
+            &order_by=${sortBy}
+            &limit=${limit}
+            &page=${page}
+            &keyword=${word}
+            &${queryCat}
+            &${queryBrand}
+            &priceFrom=${priceFrom}
+            &priceTo=${priceTo}
+        `))
+    }
+
+    const getStorage = () => {
         if(localStorage.getItem("searchWord") != null)
             word= localStorage.getItem("searchWord")
-            sortData()
-        await dispatch(getAllProductsSearch(`sort_by=${sort}&order_by=${sortBy}&limit=${limit}&page=${page}&keyword=${word}`))
+        if(localStorage.getItem("catChecked") != null)
+            queryCat = localStorage.getItem("catChecked")
+
+        if(localStorage.getItem("brandChecked") != null)
+            queryBrand = localStorage.getItem("brandChecked")
+        if(localStorage.getItem("priceFrom") != null)
+            priceFrom = localStorage.getItem("priceFrom")
+        if(localStorage.getItem("priceTo") != null)
+            priceTo = localStorage.getItem("priceTo")
+            
+
+        sortData()
     }
 
     let sortType="", sort="", sortBy="";
